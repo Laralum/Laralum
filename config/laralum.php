@@ -2,6 +2,6 @@
 
 return [
 
-    'base_url'  =>  '/administration',
+    'base_url'  => '/administration',
 
 ];
