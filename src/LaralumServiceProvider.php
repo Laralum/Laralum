@@ -3,8 +3,6 @@
 namespace Laralum\Laralum;
 
 use Illuminate\Support\ServiceProvider;
-use Laralum\Laralum\Menu;
-use Laralum\Laralum\Packages;
 
 class LaralumServiceProvider extends ServiceProvider
 {
@@ -15,7 +13,7 @@ class LaralumServiceProvider extends ServiceProvider
      */
     public function boot(\Illuminate\Routing\Router $router)
     {
-        # Load middlewares
+        // Load middlewares
         $router->middleware('laralum.base', Middleware\LaralumBase::class);
         $router->middleware('laralum.auth', Middleware\LaralumAuth::class);
 
@@ -31,23 +29,22 @@ class LaralumServiceProvider extends ServiceProvider
 
         $this->loadViewsFrom(__DIR__.'/Views', 'laralum');
 
-        if (! $this->app->routesAreCached()) {
+        if (!$this->app->routesAreCached()) {
             require __DIR__.'/Routes/web.php';
         }
 
-        # Manually register other user packages
-        $this->app->register("ConsoleTVs\\Charts\\ChartsServiceProvider");
+        // Manually register other user packages
+        $this->app->register('ConsoleTVs\\Charts\\ChartsServiceProvider');
 
-        # Manually register other aliases
+        // Manually register other aliases
 
-        # Mass service provider registerer
-        foreach(Packages::all() as $package){
+        // Mass service provider registerer
+        foreach (Packages::all() as $package) {
             $provider = Packages::provider($package);
-            if($provider){
-                $this->app->register("Laralum\\" . ucfirst($package) . "\\$provider");
+            if ($provider) {
+                $this->app->register('Laralum\\'.ucfirst($package)."\\$provider");
             }
         }
-
     }
 
     /**

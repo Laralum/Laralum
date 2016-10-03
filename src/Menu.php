@@ -12,7 +12,6 @@
 namespace Laralum\Laralum;
 
 use Illuminate\Support\Facades\Facade;
-use Request;
 
 /**
  * This is the menu facade class.
@@ -25,7 +24,7 @@ class Menu extends Facade
     {
         $value = session('laralum_menu');
 
-        if(!$value){
+        if (!$value) {
             $value = [];
         }
 
