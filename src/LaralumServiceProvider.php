@@ -14,8 +14,8 @@ class LaralumServiceProvider extends ServiceProvider
     public function boot(\Illuminate\Routing\Router $router)
     {
         // Load middlewares
-        $router->middleware('laralum.base', Middleware\LaralumBase::class);
-        $router->middleware('laralum.auth', Middleware\LaralumAuth::class);
+        $router->aliasMiddleware('laralum.base', Middleware\LaralumBase::class);
+        $router->aliasMiddleware('laralum.auth', Middleware\LaralumAuth::class);
 
         $this->loadTranslationsFrom(__DIR__.'/Translations', 'laralum');
 

@@ -18,5 +18,10 @@
             "email": "contact@aitorriba.com"
         }
     ],
+    "autoload": {
+        "psr-4": {
+            "Laralum\\Laralum\\": "./src"
+        }
+    },
     "minimum-stability": "dev"
 }

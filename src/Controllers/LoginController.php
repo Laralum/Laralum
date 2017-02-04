@@ -14,6 +14,14 @@ class LoginController extends Controller
     }
 
     /**
+     * Show index view.
+     */
+    public function index()
+    {
+        return view('laralum::index');
+    }
+
+    /**
      * Show login form.
      */
     public function show()
