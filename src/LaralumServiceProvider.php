@@ -24,7 +24,7 @@ class LaralumServiceProvider extends ServiceProvider
         ], 'config');
 
         $this->publishes([
-            __DIR__.'/Assets' => public_path('vendor/laralum'),
+            __DIR__.'/Assets' => public_path('vendor/laralum/laralum'),
         ], 'assets');
 
         $this->loadViewsFrom(__DIR__.'/Views', 'laralum');
