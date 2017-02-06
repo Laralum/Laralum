@@ -18,7 +18,7 @@ class LaralumAuth
     public function handle($request, Closure $next)
     {
         if (!Auth::check()) {
-            return redirect()->route('Laralum::login')->with('warning', 'You need to log in first');
+            return redirect()->route('laralum::login')->with('warning', 'You need to log in first');
         }
 
         return $next($request);

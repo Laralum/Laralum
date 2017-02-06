@@ -38,7 +38,7 @@ class LaralumServiceProvider extends ServiceProvider
 
         // Manually register other aliases
 
-        // Mass service provider registerer
+        // Mass service provider registerer & menu creator
         foreach (Packages::all() as $package) {
             $provider = Packages::provider($package);
             if ($provider) {

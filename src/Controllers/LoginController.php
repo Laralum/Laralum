@@ -14,19 +14,11 @@ class LoginController extends Controller
     }
 
     /**
-     * Show index view.
-     */
-    public function index()
-    {
-        return view('laralum::index');
-    }
-
-    /**
      * Show login form.
      */
     public function show()
     {
-        return view('laralum::login');
+        return view('laralum::pages.login');
     }
 
     /**
@@ -41,9 +33,9 @@ class LoginController extends Controller
 
         if (Auth::attempt(['email' => $email, 'password' => $password])) {
             // Authentication passed...
-            return redirect()->intended(route('Laralum::dashboard'));
+            return redirect()->intended(route('laralum::index'));
         }
 
-        return redirect()->route('Laralum::login')->with('error', trans('auth.failed'))->withInput();
+        return redirect()->route('laralum::login')->with('error', trans('auth.failed'))->withInput();
     }
 }

@@ -22,11 +22,7 @@ class Menu extends Facade
 {
     public static function add($data)
     {
-        $value = session('laralum_menu');
-
-        if (!$value) {
-            $value = [];
-        }
+        $value = session('laralum_menu') ? session('laralum_menu') : [];
 
         array_push($value, $data);
         session(['laralum_menu' => $value]);

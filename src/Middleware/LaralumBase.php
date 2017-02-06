@@ -16,13 +16,11 @@ class LaralumBase
      */
     public function handle($request, Closure $next)
     {
-        if (!$request->session()->get('laralum_menu')) {
-            $request->session()->put('laralum_menu', []);
-        }
+        // Before request code
 
         $response = $next($request);
 
-        $request->session()->forget('laralum_menu');
+        // After request code
 
         return $response;
     }

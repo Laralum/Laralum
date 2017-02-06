@@ -25,14 +25,11 @@ class Packages extends Facade
      */
     public static function all()
     {
-        $file = file_get_contents(base_path().'/composer.json');
-        $json = json_decode($file, true);
-
-        // Check for laralum packages
+        // Check for Laralum packages
         $packages = [];
 
         foreach (scandir(__DIR__.'/../../') as $package) {
-            if ($package != '.' and $package != '..' and $package != 'laralum') {
+            if ($package != '.' and $package != '..' and ucfirst($package) != 'Laralum') {
                 array_push($packages, $package);
             }
         }
@@ -42,6 +39,8 @@ class Packages extends Facade
 
     /**
      * Returns the package service provider if exists.
+     *
+     * @param string $package
      */
     public static function provider($package)
     {
@@ -49,6 +48,25 @@ class Packages extends Facade
         foreach ($files as $file) {
             if (strpos($file, 'ServiceProvider') !== false) {
                 return str_replace('.php', '', $file);
+            }
+        }
+
+        return false;
+    }
+
+    /**
+     * Returns the package menu if exists.
+     *
+     * @param string $package
+     */
+    public static function menu($package)
+    {
+        $dir = __DIR__.'/../../'.$package.'/src';
+        $files = scandir($dir);
+        foreach ($files as $file) {
+            if ($file == 'Menu.json') {
+                $file_r = file_get_contents($dir . '/' . $file);
+                return json_decode($file_r, true);
             }
         }
 
