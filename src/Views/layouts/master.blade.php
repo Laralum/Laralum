@@ -24,20 +24,23 @@
                     <a class="navbar-brand" href="#">{{ config('laralum.general.name') }}</a>
                     <ul class="navbar-nav mr-auto">
                         @foreach(Laralum\Laralum\Packages::all() as $package)
-                            <li class="nav-item dropdown">
-                                <a class="nav-link dropdown-toggle" href="#" id="{{ $package }}-menu" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                                    {{ ucfirst($package) }}
-                                </a>
-                                <div class="dropdown-menu" aria-labelledby="{{ $package }}-menu">
-                                    @foreach(Laralum\Laralum\Packages::menu($package) as $item)
-                                        @if( array_key_exists('text', $item) and array_key_exists('link', $item) )
-                                            <a class="dropdown-item" href="{{ $item['link'] }}">{{ $item['text'] }}</a>
-                                        @elseif( array_key_exists('text', $item) and array_key_exists('route', $item) )
-                                            <a class="dropdown-item" href="{{ route($item['route']) }}">{{ $item['text'] }}</a>
-                                        @endif
-                                    @endforeach
-                                </div>
-                            </li>
+                            @php $items = Laralum\Laralum\Packages::menu($package); @endphp
+                            @if($items)
+                                <li class="nav-item dropdown">
+                                    <a class="nav-link dropdown-toggle" href="#" id="{{ $package }}-menu" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                                        {{ ucfirst($package) }}
+                                    </a>
+                                    <div class="dropdown-menu" aria-labelledby="{{ $package }}-menu">
+                                        @foreach($items as $item)
+                                            @if( array_key_exists('text', $item) and array_key_exists('link', $item) )
+                                                <a class="dropdown-item" href="{{ $item['link'] }}">{{ $item['text'] }}</a>
+                                            @elseif( array_key_exists('text', $item) and array_key_exists('route', $item) )
+                                                <a class="dropdown-item" href="{{ route($item['route']) }}">{{ $item['text'] }}</a>
+                                            @endif
+                                        @endforeach
+                                    </div>
+                                </li>
+                            @endif
                         @endforeach
                     </ul>
                 </div>

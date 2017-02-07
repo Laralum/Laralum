@@ -70,6 +70,6 @@ class Packages extends Facade
             }
         }
 
-        return false;
+        return [];
     }
 }
