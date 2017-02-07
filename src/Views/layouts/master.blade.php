@@ -8,7 +8,9 @@
 
         <!-- Bootstrap CSS -->
         <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-alpha.6/css/bootstrap.min.css" integrity="sha384-rwoIResjU2yc3z8GV/NPeZWAv56rSmLldC3R/AZzGRnGxQQKnKkoFVhFQhNUwEyJ" crossorigin="anonymous">
+        <link rel="stylesheet" href="//cdn.materialdesignicons.com/1.8.36/css/materialdesignicons.min.css">
         @include('laralum::assets.css')
+        {!! ConsoleTVs\Charts\Facades\Charts::assets() !!}
         @yield('css')
     </head>
     <body>
@@ -19,7 +21,7 @@
                     <span class="navbar-toggler-icon"></span>
                 </button>
                 <div class="collapse navbar-collapse" id="navbarTogglerDemo01">
-                    <a class="navbar-brand" href="#">{{ config('laralum.settings.base_url') }}</a>
+                    <a class="navbar-brand" href="#">{{ config('laralum.general.name') }}</a>
                     <ul class="navbar-nav mr-auto">
                         @foreach(Laralum\Laralum\Packages::all() as $package)
                             <li class="nav-item dropdown">
@@ -43,7 +45,7 @@
         </nav>
         <div class="jumbotron jumbotron-fluid">
             <div class="container">
-                <h1 class="display-3">@yield('title')</h1>
+                <h1 class="display-3"><span class="mdi @yield('icon')"></span> @yield('title')</h1>
                 <p class="lead">@yield('subtitle')</p>
             </div>
         </div>
@@ -53,7 +55,6 @@
         </div>
 
         <!-- jQuery first, then Tether, then Bootstrap JS. -->
-        <script src="https://code.jquery.com/jquery-3.1.1.slim.min.js" integrity="sha384-A7FZj7v+d/sdmMqp/nOQwliLvUsJfDHW+k9Omg/a/EheAdgtzNs3hpfag6Ed950n" crossorigin="anonymous"></script>
         <script src="https://cdnjs.cloudflare.com/ajax/libs/tether/1.4.0/js/tether.min.js" integrity="sha384-DztdAPBWPRXSA/3eYEEUWrWCy7G5KFbe8fFjk5JAIxUYHKkDx6Qin1DkWx51bBrb" crossorigin="anonymous"></script>
         <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-alpha.6/js/bootstrap.min.js" integrity="sha384-vBWWzlZJ8ea9aCX4pEW3rVHjgjt7zpkNpZk+02D9phzyeVkE+jo0ieGizqPLForn" crossorigin="anonymous"></script>
         @yield('js')
