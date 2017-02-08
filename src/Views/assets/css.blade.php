@@ -5,4 +5,9 @@
     .clickable {
         cursor: pointer;
     }
+    @media(max-width: 991px) {
+        .col {
+            margin-top: 15px;
+        }
+    }
 </style>
