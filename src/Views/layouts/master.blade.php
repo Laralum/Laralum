@@ -22,25 +22,35 @@
                 <a class="navbar-brand" href="{{ route('laralum::index') }}">{{ config('laralum.general.name') }}</a>
                 <div class="collapse navbar-collapse" id="navbarSupportedContent">
                     <ul class="navbar-nav mr-auto">
-                      @foreach(Laralum\Laralum\Packages::all() as $package)
-                          @php $items = Laralum\Laralum\Packages::menu($package); @endphp
-                          @if($items)
-                              <li class="nav-item dropdown">
-                                  <a class="nav-link dropdown-toggle" href="#" id="{{ $package }}-menu" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                                      {{ ucfirst($package) }}
-                                  </a>
-                                  <div class="dropdown-menu" aria-labelledby="{{ $package }}-menu">
-                                      @foreach($items as $item)
-                                          @if( array_key_exists('text', $item) and array_key_exists('link', $item) )
-                                              <a class="dropdown-item" href="{{ $item['link'] }}">{{ $item['text'] }}</a>
-                                          @elseif( array_key_exists('text', $item) and array_key_exists('route', $item) )
-                                              <a class="dropdown-item" href="{{ route($item['route']) }}">{{ $item['text'] }}</a>
-                                          @endif
-                                      @endforeach
-                                  </div>
-                              </li>
-                          @endif
-                      @endforeach
+                    @foreach(Laralum\Laralum\Packages::all() as $package)
+                        @php $menu = Laralum\Laralum\Packages::menu($package); @endphp
+                        @if( $menu and array_key_exists('items', $menu) )
+                            <li class="nav-item dropdown">
+                              <a class="nav-link dropdown-toggle" href="#" id="{{ $package }}-menu" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                                  {{ array_key_exists('name', $menu) ? $menu['name'] : ucfirst($package) }}
+                              </a>
+                              <div class="dropdown-menu" aria-labelledby="{{ $package }}-menu">
+                                  @foreach($menu['items'] as $item)
+                                      @if( array_key_exists('text', $item) and array_key_exists('link', $item) )
+                                          <a class="dropdown-item" href="{{ $item['link'] }}">{{ $item['text'] }}</a>
+                                      @elseif( array_key_exists('text', $item) and array_key_exists('route', $item) )
+                                          <a class="dropdown-item" href="{{ route($item['route']) }}">{{ $item['text'] }}</a>
+                                      @endif
+                                  @endforeach
+                              </div>
+                            </li>
+                        @elseif( $menu and array_key_exists('item', $menu) )
+                            @if( array_key_exists('text', $menu['item']) and array_key_exists('link', $menu['item']) )
+                                <li class="nav-item">
+                                    <a class="nav-link" href="{{ $menu['item']['link'] }}">{{ $menu['item']['text'] }}</a>
+                                </li>
+                            @elseif( array_key_exists('text', $menu['item']) and array_key_exists('route', $menu['item']) )
+                                <li class="nav-item">
+                                    <a class="nav-link" href="{{ route($menu['item']['route']) }}">{{ $menu['item']['text'] }}</a>
+                                </li>
+                            @endif
+                        @endif
+                    @endforeach
                     </ul>
                 </div>
             </div>
