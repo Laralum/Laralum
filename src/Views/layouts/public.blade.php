@@ -32,7 +32,7 @@
                 </a>
                 <div class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
                     <a class="dropdown-item" href="#"><i class="mdi mdi-account-settings-variant"></i>Account settings</a>
-                    <form id="logout-form" action="{{ LK::url('/logout') }}" method="POST" style="display: none;">
+                    <form id="logout-form" action="{{ route('logout') }}" method="POST" style="display: none;">
                         {{ csrf_field() }}
                     </form>
 
