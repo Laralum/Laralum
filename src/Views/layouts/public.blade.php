@@ -26,24 +26,32 @@
             <li class="nav-item">
                 <a class="nav-link" href="#">Home</a>
             </li>
+        </ul>
+        <div class="form-inline my-2 my-lg-0">
+            <ul class="navbar-nav mr-auto">
             <li class="nav-item dropdown">
+                @php
+                    $user = Auth::user();
+                @endphp
                 <a class="nav-link dropdown-toggle" href="http://example.com" id="navbarDropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                    {{Auth::user()->name}}
+                    {{$user->name}}@if(strlen($user->name) < strlen('Account Settings')+4) @for ($i=strlen($user->name); $i < strlen('Account Settings')+4; $i++) &nbsp; @endfor @endif
                 </a>
                 <div class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
-                    <a class="dropdown-item" href="#"><i class="mdi mdi-account-settings-variant"></i>Account settings</a>
+                    <a class="dropdown-item" href="{{ route('laralum_public::profile') }}"><i class="mdi mdi-account"></i> View profile</a>
+                    <a class="dropdown-item" href="{{ route('laralum_public::profile.edit') }}"><i class="mdi mdi-account-settings-variant"></i> Account settings</a>
                     <form id="logout-form" action="{{ route('logout') }}" method="POST" style="display: none;">
                         {{ csrf_field() }}
                     </form>
 
-                    <a class="dropdown-item" href="{{route('logout')}}" onclick="event.preventDefault();document.getElementById('logout-form').submit();"><i class="mdi mdi-logout"></i>Logout</a>
+                    <a class="dropdown-item" href="{{route('logout')}}" onclick="event.preventDefault();document.getElementById('logout-form').submit();"><i class="mdi mdi-logout"></i> Logout</a>
                 </div>
             </li>
-        </ul>
+            </ul>
+        </div>
     </div>
 </nav>
         @endif
-        <div class="container">
+        <div class="container" style="margin-top:60px;margin-bottom:60px;">
             @yield('content')
         </div>
         <div style="margin-top:25px;"></div>
