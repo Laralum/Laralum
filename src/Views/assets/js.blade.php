@@ -9,11 +9,10 @@
     <script>
         $(function() {
             swal({
-              title: 'Whoops!',
+              title: '{{trans('laralum::general.whops')}}',
               type: 'error',
-              timer: 4000,
               html:'{{Session::get('error')}}',
-              confirmButtonText:'Okai',
+              confirmButtonText:'{{trans('laralum::general.okai')}}',
             })
         })
     </script>
@@ -23,11 +22,10 @@
     <script>
         $(function() {
             swal({
-              title: 'Info',
+              title: '{{trans('laralum::general.info')}}',
               type: 'info',
-              timer: 4000,
               html:'{{Session::get('info')}}',
-              confirmButtonText:'Okai',
+              confirmButtonText:'{{trans('laralum::general.okai')}}',
             })
         })
     </script>
@@ -37,11 +35,23 @@
     <script>
         $(function() {
             swal({
-              title: 'Success!',
+              title: '{{trans('laralum::general.success')}}',
               type: 'success',
-              timer: 4000,
               html:'{{Session::get('success')}}',
-              confirmButtonText:'Okai',
+              confirmButtonText:'{{trans('laralum::general.okai')}}',
+            })
+        })
+    </script>
+@endif
+
+@if(count($errors->all()))
+    <script>
+        $(function() {
+            swal({
+              title: '{{trans('laralum::general.invalid_form')}}',
+              type: 'error',
+              html:'@foreach($errors->all() as $error) {{$error}}<br/>@endforeach',
+              confirmButtonText:'{{trans('laralum::general.okai')}}',
             })
         })
     </script>

@@ -34,7 +34,13 @@
                     $user = Auth::user();
                 @endphp
                 <a class="nav-link dropdown-toggle" href="http://example.com" id="navbarDropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                    {{$user->name}}@if(strlen($user->name) < strlen('Account Settings')+4) @for ($i=strlen($user->name); $i < strlen('Account Settings')+4; $i++) &nbsp; @endfor @endif
+                    @if(in_array('profile', Laralum\Laralum\Packages::all()))
+                        @php
+                            $user = Laralum\Users\Models\User::findOrFail(Auth::id());
+                        @endphp
+                        <img src="{{$user->avatar()}}" class="rounded-circle" style="max-width:20px;max-height:20px;" alt="Profile picture">
+                    @endif
+                    &nbsp;{{$user->name}}@if(strlen($user->name) < strlen('Account Settings')+1) @for ($i=strlen($user->name); $i < strlen('Account Settings')+1; $i++) &nbsp; @endfor @endif
                 </a>
                 <div class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
                     <a class="dropdown-item" href="{{ route('laralum_public::profile') }}"><i class="mdi mdi-account"></i> View profile</a>
@@ -51,7 +57,13 @@
     </div>
 </nav>
         @endif
-        <div class="container" style="margin-top:60px;margin-bottom:60px;">
+        <div class="container">
+            <center>
+                <h1 style="margin-top:10px;">@yield('title')</h1>
+                <hr>
+            </center>
+        </div>
+        <div class="container" style="margin-top:40px;margin-bottom:40px;">
             @yield('content')
         </div>
         <div style="margin-top:25px;"></div>
