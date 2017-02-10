@@ -35,6 +35,7 @@ class LaralumServiceProvider extends ServiceProvider
 
         // Manually register other user packages
         $this->app->register('ConsoleTVs\\Charts\\ChartsServiceProvider');
+        $this->app->register('Unicodeveloper\\Identify\\IdentifyServiceProvider');
 
         // Manually register other aliases
 

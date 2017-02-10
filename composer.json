@@ -5,6 +5,7 @@
         "php": ">=5.6.4",
         "laravel/framework": "v5.4.*",
         "consoletvs/charts": "4.*",
+        "consoletvs/identify": "1.*",
         "aitor24/linker": ">=1.0.2"
     },
     "license": "MIT",
