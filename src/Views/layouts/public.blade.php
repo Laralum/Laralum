@@ -16,7 +16,7 @@
     </head>
     <body>
         @if(Auth::check())
-<nav class="navbar navbar-toggleable-md navbar-light bg-faded">
+<nav class="navbar navbar-toggleable-md navbar-inverse" style="background-color:#009688;">
     <button class="navbar-toggler navbar-toggler-right" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
         <span class="navbar-toggler-icon"></span>
     </button>
@@ -38,18 +38,20 @@
                         @php
                             $user = Laralum\Users\Models\User::findOrFail(Auth::id());
                         @endphp
-                        <img src="{{$user->avatar()}}" class="rounded-circle" style="max-width:20px;max-height:20px;" alt="Profile picture">
+                        <img src="{{$user->avatar()}}" class="rounded-circle" style="max-width:20px;max-height:20px;" alt="@lang('laralum_profile::profile.account_settings')">
                     @endif
                     &nbsp;{{$user->name}}@if(strlen($user->name) < strlen('Account Settings')+1) @for ($i=strlen($user->name); $i < strlen('Account Settings')+1; $i++) &nbsp; @endfor @endif
                 </a>
                 <div class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
-                    <a class="dropdown-item" href="{{ route('laralum_public::profile') }}"><i class="mdi mdi-account"></i> View profile</a>
-                    <a class="dropdown-item" href="{{ route('laralum_public::profile.edit') }}"><i class="mdi mdi-account-settings-variant"></i> Account settings</a>
+                    @if(in_array('profile', Laralum\Laralum\Packages::all()))
+                        <a class="dropdown-item" href="{{ route('laralum_public::profile') }}"><i class="mdi mdi-account"></i> @lang('laralum_profile::profile.profile')</a>
+                        <a class="dropdown-item" href="{{ route('laralum_public::profile.edit') }}"><i class="mdi mdi-account-settings-variant"></i> @lang('laralum_profile::profile.account_settings')</a>
+                    @endif
                     <form id="logout-form" action="{{ route('logout') }}" method="POST" style="display: none;">
                         {{ csrf_field() }}
                     </form>
 
-                    <a class="dropdown-item" href="{{route('logout')}}" onclick="event.preventDefault();document.getElementById('logout-form').submit();"><i class="mdi mdi-logout"></i> Logout</a>
+                    <a class="dropdown-item" href="{{route('logout')}}" onclick="event.preventDefault();document.getElementById('logout-form').submit();"><i class="mdi mdi-logout"></i> @lang('laralum::general.logout')</a>
                 </div>
             </li>
             </ul>

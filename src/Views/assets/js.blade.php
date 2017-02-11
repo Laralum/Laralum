@@ -2,7 +2,7 @@
 <script>
     $(function () {
         $('[data-toggle="tooltip"]').tooltip();
-    })
+    });
 </script>
 
 @if(Session::has('error'))
@@ -13,8 +13,8 @@
               type: 'error',
               html:'{{Session::get('error')}}',
               confirmButtonText:'{{trans('laralum::general.okai')}}',
-            })
-        })
+            });
+        });
     </script>
 @endif
 
@@ -26,8 +26,8 @@
               type: 'info',
               html:'{{Session::get('info')}}',
               confirmButtonText:'{{trans('laralum::general.okai')}}',
-            })
-        })
+            });
+        });
     </script>
 @endif
 
@@ -39,8 +39,8 @@
               type: 'success',
               html:'{{Session::get('success')}}',
               confirmButtonText:'{{trans('laralum::general.okai')}}',
-            })
-        })
+            });
+        });
     </script>
 @endif
 
@@ -52,7 +52,7 @@
               type: 'error',
               html:'@foreach($errors->all() as $error) {{$error}}<br/>@endforeach',
               confirmButtonText:'{{trans('laralum::general.okai')}}',
-            })
-        })
+            });
+        });
     </script>
 @endif
