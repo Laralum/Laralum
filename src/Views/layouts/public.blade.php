@@ -14,61 +14,10 @@
         @include('laralum::assets.css')
         @yield('css')
     </head>
-    <body>
-        @if(Auth::check())
-<nav class="navbar navbar-toggleable-md navbar-inverse" style="background-color:#009688;">
-    <button class="navbar-toggler navbar-toggler-right" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
-        <span class="navbar-toggler-icon"></span>
-    </button>
-    <a class="navbar-brand" href="#">{{ config('laralum.general.name') }}</a>
-    <div class="collapse navbar-collapse" id="navbarSupportedContent">
-        <ul class="navbar-nav mr-auto">
-            <li class="nav-item">
-                <a class="nav-link" href="#">Home</a>
-            </li>
-        </ul>
-        <div class="form-inline my-2 my-lg-0">
-            <ul class="navbar-nav mr-auto">
-            <li class="nav-item dropdown">
-                @php
-                    $user = Auth::user();
-                @endphp
-                <a class="nav-link dropdown-toggle" href="http://example.com" id="navbarDropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                    @if(in_array('profile', Laralum\Laralum\Packages::all()))
-                        @php
-                            $user = Laralum\Users\Models\User::findOrFail(Auth::id());
-                        @endphp
-                        <img src="{{$user->avatar()}}" class="rounded-circle" style="max-width:20px;max-height:20px;" alt="@lang('laralum_profile::profile.account_settings')">
-                    @endif
-                    &nbsp;{{$user->name}}@if(strlen($user->name) < strlen('Account Settings')+1) @for ($i=strlen($user->name); $i < strlen('Account Settings')+1; $i++) &nbsp; @endfor @endif
-                </a>
-                <div class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
-                    @if(in_array('profile', Laralum\Laralum\Packages::all()))
-                        <a class="dropdown-item" href="{{ route('laralum_public::profile') }}"><i class="mdi mdi-account"></i> @lang('laralum_profile::profile.profile')</a>
-                        <a class="dropdown-item" href="{{ route('laralum_public::profile.edit') }}"><i class="mdi mdi-account-settings-variant"></i> @lang('laralum_profile::profile.account_settings')</a>
-                    @endif
-                    <form id="logout-form" action="{{ route('logout') }}" method="POST" style="display: none;">
-                        {{ csrf_field() }}
-                    </form>
-
-                    <a class="dropdown-item" href="{{route('logout')}}" onclick="event.preventDefault();document.getElementById('logout-form').submit();"><i class="mdi mdi-logout"></i> @lang('laralum::general.logout')</a>
-                </div>
-            </li>
-            </ul>
-        </div>
-    </div>
-</nav>
-        @endif
-        <div class="container">
-            <center>
-                <h1 style="margin-top:10px;">@yield('title')</h1>
-                <hr>
-            </center>
-        </div>
-        <div class="container" style="margin-top:40px;margin-bottom:40px;">
+    <body style="background-color: #eeeeee;">
+        <div class="container" style="margin-top: 50px; margin-bottom: 50px;">
             @yield('content')
         </div>
-        <div style="margin-top:25px;"></div>
 
         <!-- jQuery first, then Tether, then Bootstrap JS. -->
         <script src="https://code.jquery.com/jquery-3.1.1.slim.min.js" integrity="sha384-A7FZj7v+d/sdmMqp/nOQwliLvUsJfDHW+k9Omg/a/EheAdgtzNs3hpfag6Ed950n" crossorigin="anonymous"></script>
