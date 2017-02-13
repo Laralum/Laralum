@@ -82,4 +82,23 @@ class Packages extends Facade
 
         return [];
     }
+
+    /**
+     * Returns the package submenu if exists.
+     *
+     * @param string $package
+     */
+    public static function submenu($package)
+    {
+        $dir = __DIR__.'/../../'.$package.'/src';
+        $files = scandir($dir);
+        foreach ($files as $file) {
+            if ($file == 'Submenu.json') {
+                $file_r = file_get_contents($dir . '/' . $file);
+                return json_decode($file_r, true);
+            }
+        }
+
+        return [];
+    }
 }

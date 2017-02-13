@@ -6,7 +6,8 @@
         "laravel/framework": "v5.4.*",
         "consoletvs/charts": "4.*",
         "consoletvs/identify": "1.*",
-        "aitor24/linker": ">=1.0.2"
+        "aitor24/linker": ">=1.0.2",
+        "laralum/customization": "dev-master"
     },
     "license": "MIT",
     "authors": [

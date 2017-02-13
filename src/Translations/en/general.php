@@ -32,5 +32,5 @@ return [
     'remember_me'   => 'Remember Me',
     'submit'        => 'Submit',
     'loading'       => 'Loading',
-    
+
 ];
