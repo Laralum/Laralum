@@ -3,6 +3,8 @@
 namespace Laralum\Laralum\Middleware;
 
 use Closure;
+use Laralum\Laralum\Packages;
+use Laralum\Laralum\Injector;
 
 class LaralumBase
 {
@@ -17,6 +19,9 @@ class LaralumBase
     public function handle($request, Closure $next)
     {
         // Before request code
+        foreach(Packages::all() as $package) {
+            Injector::inject('laralum.base', $package);
+        }
 
         $response = $next($request);
 

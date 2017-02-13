@@ -15,9 +15,17 @@
         <!-- Sweetalert2 CSS -->
         <link rel="stylesheet" href="https://cdn.jsdelivr.net/sweetalert2/6.3.8/sweetalert2.min.css">
 
+        @php $packages = Laralum\Laralum\Packages::all(); @endphp
+
         @include('laralum::assets.css')
         {!! ConsoleTVs\Charts\Facades\Charts::assets() !!}
         @yield('css')
+
+        <!-- CSS Injection for packages -->
+        @foreach($packages as $package)
+            {!! Laralum\Laralum\Injector::inject('style', $package) !!}
+        @endforeach
+
     </head>
     <body>
         <nav class="navbar navbar-toggleable-md navbar-inverse bg-primary">
@@ -28,7 +36,7 @@
 
           <div class="collapse navbar-collapse" id="navbarSupportedContent">
             <ul class="navbar-nav mr-auto">
-                @foreach(Laralum\Laralum\Packages::all() as $package)
+                @foreach($packages as $package)
                     @php $menu = Laralum\Laralum\Packages::menu($package); @endphp
                     @if( $menu and array_key_exists('items', $menu) )
                         <li class="nav-item dropdown">
@@ -83,5 +91,10 @@
         <script src="https://cdn.jsdelivr.net/sweetalert2/6.3.8/sweetalert2.min.js"></script>
         @include('laralum::assets.js')
         @yield('js')
+
+        <!-- JS Injection for packages -->
+        @foreach($packages as $package)
+            {!! Laralum\Laralum\Injector::inject('script', $package) !!}
+        @endforeach
     </body>
 </html>

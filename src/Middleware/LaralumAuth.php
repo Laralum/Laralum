@@ -4,6 +4,8 @@ namespace Laralum\Laralum\Middleware;
 
 use Auth;
 use Closure;
+use Laralum\Laralum\Packages;
+use Laralum\Laralum\Injector;
 
 class LaralumAuth
 {
@@ -19,6 +21,10 @@ class LaralumAuth
     {
         if (!Auth::check()) {
             return redirect()->route('laralum::login')->with('warning', 'You need to log in first');
+        }
+
+        foreach(Packages::all() as $package) {
+            Injector::inject('laralum.base', $package);
         }
 
         return $next($request);

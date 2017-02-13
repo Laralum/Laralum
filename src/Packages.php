@@ -55,6 +55,16 @@ class Packages extends Facade
     }
 
     /**
+     * Returns the if the package is installed.
+     *
+     * @param string $package
+     */
+    public static function installed($package)
+    {
+        return in_array($package, static::all());
+    }
+
+    /**
      * Returns the package menu if exists.
      *
      * @param string $package
