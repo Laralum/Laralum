@@ -1,8 +1,31 @@
+<link href="https://fonts.googleapis.com/css?family=Roboto:300,400" rel="stylesheet">
 <style>
     @import url('https://fonts.googleapis.com/css?family=Miriam+Libre|Raleway');
     body {
-        font-family: 'Miriam Libre', sans-serif;
+        font-family: 'Roboto', sans-serif;
     }
+
+    /* Small devices */
+    @media (max-width: 991px) {
+        #jumbotron-title {
+            font-size: 35px;
+        }
+    }
+
+    /* Medium devices */
+    @media (min-width: 992px) {
+        #jumbotron-title {
+            font-size: 50px;
+        }
+    }
+
+    /* Large devices */
+    @media (min-width: 1200px) {
+        #jumbotron-title {
+            font-size: 60px;
+        }
+    }
+
     .custom-container {
         margin-left: 3%;
         margin-right: 3%;
