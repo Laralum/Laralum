@@ -52,9 +52,9 @@
     .statistic {
         font-size: 17px;
     }
-    @media(max-width: 991px) {
-        .col {
-            margin-top: 15px;
-        }
+
+    .col {
+        margin-bottom: 15px;
+    }
     }
 </style>
