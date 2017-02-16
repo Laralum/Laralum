@@ -6,11 +6,8 @@
         "laravel/framework": "v5.4.*",
         "consoletvs/charts": "4.*",
         "consoletvs/identify": "1.*",
-        "laralum/settings": "dev-master",
-        "laralum/customization": "dev-master",
-        "laralum/users": "dev-master",
-        "laralum/permissions": "dev-master",
-        "laralum/roles": "dev-master"
+        "laralum/dashboard": "dev-master",
+        "laralum/settings": "dev-master"
     },
     "license": "MIT",
     "authors": [
