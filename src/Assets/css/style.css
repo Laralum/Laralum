@@ -6988,7 +6988,7 @@ ul.icons-list {
         font-size: 18px; }
 
 .app-footer {
-  min-height: 50px;
+  /* min-height: 50px; */
   padding: 0 1rem;
   line-height: 50px;
   color: #263238;
