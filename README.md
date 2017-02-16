@@ -1,7 +1,11 @@
 # Laralum
 The modular open source laravel administration panel
 
-[![StyleCI](https://styleci.io/repos/69903606/shield?branch=master)](https://styleci.io/repos/69903606)
+<p align="center">
+    <a href="https://styleci.io/repos/69903606"><img src="https://styleci.io/repos/69903606/shield?branch=master" alt="StyleCI"></a>
+</p>
+
+
 
 **UNDER ACTIVE DEVELOPMENT**
 
@@ -9,6 +13,46 @@ The modular open source laravel administration panel
 
 https://github.com/ConsoleTVs/Laralum
 
+
+## Getting started
+
+*For beta testers*
+
+Before starts with installation you should have done `auth`
+
+```
+php artisan make:auth
+```
+
+### Installation
+
+Require laralum/laralum with composer
+
+```
+composer require laralum/laralum dev-master
+```
+
+### Register service provider
+
+Include the line below to config/app.php inside providers array :
+
+```php
+Laralum\Laralum\LaralumServiceProvider::class,
+```
+
+### Migrate
+
+Migrate database tables
+
+```
+php artisan:migrate
+```
+
+### Packages
+
+laralum/laralum, requires basic packages such permissions, roles, users... but there are also optional packages such advertisements, tickets...
+
+For install an optional package, you should follow the documentation of each package on his README
 
 ## Injections
 
