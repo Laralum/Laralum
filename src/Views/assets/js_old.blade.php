@@ -1,4 +1,10 @@
-<script>/* Todo */</script>
+<!-- Initialization of tooltips -->
+<script>
+    $(function () {
+        $('[data-toggle="tooltip"]').tooltip();
+    });
+</script>
+
 @if(Session::has('error'))
     <script>
         $(function() {
