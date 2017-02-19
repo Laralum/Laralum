@@ -32,7 +32,7 @@ $packages = Laralum\Laralum\Packages::all();
         {!! ConsoleTVs\Charts\Facades\Charts::assets() !!}
     </head>
     <body>
-        <div uk-sticky class="uk-navbar-container tm-navbar-container uk-active" style="position: fixed; top: 0px;">
+        <div uk-sticky class="uk-navbar-container tm-navbar-container uk-position-relative uk-active" style="position: fixed; top: 0px;">
             <div class="uk-container uk-container-expand">
                 <nav uk-navbar="mode: click; offset: -17;">
                     <div class="uk-navbar-left">
