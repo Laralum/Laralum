@@ -112,5 +112,13 @@ $packages = Laralum\Laralum\Packages::all();
         <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery.transit/0.9.12/jquery.transit.min.js" integrity="sha256-rqEXy4JTnKZom8mLVQpvni3QHbynfjPmPxQVsPZgmJY=" crossorigin="anonymous"></script>
         <script src="https://cdn.rawgit.com/Laralum/Laralum/0d0e7bbe/src/Assets/js/script.js"></script>
         <script src="https://cdn.rawgit.com/Laralum/Laralum/0d0e7bbe/src/Assets/js/status.js"></script>
+
+        @include('laralum::assets.js')
+        @yield('js')
+
+        <!-- JS Injection for packages -->
+        @foreach($packages as $package)
+            {!! Laralum\Laralum\Injector::inject('script', $package) !!}
+        @endforeach
     </body>
 </html>
