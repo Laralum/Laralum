@@ -46,7 +46,8 @@ html, body{
     width: 240px !important;
     padding: 40px 40px 60px 40px;
     border-right: 1px #e5e5e5 solid;
-    overflow: auto
+    overflow-y: auto;
+	overflow-x: hidden;
 }
 .tm-sidebar-left::-webkit-scrollbar-track {
 	-webkit-box-shadow: inset 0 0 6px rgba(0,0,0,0.3);

@@ -20,12 +20,23 @@ $(function() {
     $('#sidebar_toggle').click(function() {
         var sidebar = $('#sidebar');
         var padder = $('.content-padder');
-        if( sidebar.css('x') == '-300px' ) {
+        if( sidebar.css('x') == '-300px' || sidebar.css('opacity') == 0 ) {
             sidebarToggle(true)
         } else {
             sidebarToggle(false)
         }
     });
+	
+	$( window ).resize(function() {
+		var sidebar = $('#sidebar');
+        var padder = $('.content-padder');
+		padder.removeAttr( 'style' );
+		if( $( window ).width() < 960 && sidebar.css('opacity') == 1 ) {
+			sidebarToggle(false);
+		} else if( $( window ).width() > 960 && sidebar.css('opacity') == 0 ) {
+			sidebarToggle(true);
+		}
+	});
 
     $('.content-padder').click(function() {
         if( $( window ).width() < 960 ) {

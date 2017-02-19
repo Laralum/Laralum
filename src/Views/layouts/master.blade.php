@@ -18,6 +18,7 @@ $packages = Laralum\Laralum\Packages::all();
         <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.1.1/jquery.min.js" integrity="sha256-hVVnYaiADRTO2PzUGmuLJr8BLUSjGIZsDYGmIJLv2b8=" crossorigin="anonymous"></script>
         <script src="https://cdn.rawgit.com/Laralum/Laralum/0d0e7bbe/src/Assets/js/uikit.min.js" ></script>
         <link rel="stylesheet" href="https://code.ionicframework.com/ionicons/2.0.1/css/ionicons.min.css">
+
         <!-- CSS Injection for packages -->
         @foreach($packages as $package)
             {!! Laralum\Laralum\Injector::inject('style', $package) !!}
@@ -31,7 +32,7 @@ $packages = Laralum\Laralum\Packages::all();
         {!! ConsoleTVs\Charts\Facades\Charts::assets() !!}
     </head>
     <body>
-        <div uk-sticky="media: 960" class="uk-navbar-container tm-navbar-container uk-sticky uk-active" style="position: fixed; top: 0px; width: 1903px;">
+        <div uk-sticky class="uk-navbar-container tm-navbar-container uk-active" style="position: fixed; top: 0px;">
             <div class="uk-container uk-container-expand">
                 <nav uk-navbar="mode: click; offset: -17;">
                     <div class="uk-navbar-left">
@@ -68,8 +69,8 @@ $packages = Laralum\Laralum\Packages::all();
                 <div class="user">
                     <img id="avatar" width="100" class="uk-border-circle" src="https://cdn.rawgit.com/Laralum/Laralum/0d0e7bbe/src/Assets/images/avatar.jpg" />
                     <div class="uk-margin-top"></div>
-                    <div id="name">{{ Auth::user()->name }}</div>
-                    <div id="email">{{ Auth::user()->email }}</div>
+                    <div id="name" class="uk-text-break">{{ Auth::user()->name }}</div>
+                    <div id="email" class="uk-text-break">{{ Auth::user()->email }}</div>
                     <span id="status" data-enabled="true" data-online-text="Online" data-away-text="Away" data-interval="15000" class="uk-margin-top uk-label uk-label-success"></span>
                 </div>
                 <br />
