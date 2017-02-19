@@ -24,7 +24,7 @@ html, body{
 }
 .content-background {
     min-height: calc(100% - 80px);
-    background-color: #F5F5F5;
+    background-color: #F0F0F0;
 }
 .statistics-text {
     font-size: 25px;
