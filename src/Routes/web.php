@@ -9,5 +9,4 @@ Route::group([
         Route::get('/', 'LaralumController@index')->name('index');
         Route::get('/login', 'LoginController@show')->name('login');
         Route::post('/login', 'LoginController@login')->name('login_post');
-        Route::get('/logout', 'LoginController@logout')->name('logout');
 });

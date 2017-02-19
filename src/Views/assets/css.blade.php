@@ -1,5 +1,3 @@
 <style>
-    body {
-        font-family: 'Roboto', sans-serif;
-    }
+    /* Todo */
 </style>

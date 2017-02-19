@@ -1,186 +1,116 @@
-@php $packages = Laralum\Laralum\Packages::all(); @endphp
+@php
+$settings = Laralum\Settings\Models\Settings::first();
+$packages = Laralum\Laralum\Packages::all();
+@endphp
 <!DOCTYPE html>
-<html lang="en">
+<html>
+    <head>
+        <title>@yield('title') - {{ $settings->appname }}</title>
 
-<head>
+        <meta charset="UTF-8">
+        <meta name="description" content="Clean and responsive administration panel">
+        <meta name="keywords" content="Admin,Panel,HTML,CSS,XML,JavaScript">
+        <meta name="author" content="Erik Campobadal">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-    <meta charset="utf-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-    <meta name="description" content="{{ Laralum\Settings\Models\Settings::first()->appname }} - @yield('title')">
-    <meta name="author" content="{{ Laralum\Settings\Models\Settings::first()->appname }}">
-    <meta name="keyword" content="Laralum,Bootstrap,Admin,Template,Open,Source,AngularJS,Angular,Angular2,jQuery,CSS,HTML,RWD,Dashboard">
-    <link rel="shortcut icon" href="https://cdn.rawgit.com/Laralum/Laralum/master/src/Assets/laralum.ico">
+        <link rel="stylesheet" href="https://cdn.rawgit.com/Laralum/Laralum/0d0e7bbe/src/Assets/css/uikit.min.css" />
+        <link rel="stylesheet" href="https://cdn.rawgit.com/Laralum/Laralum/0d0e7bbe/src/Assets/css/style.css" />
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.1.1/jquery.min.js" integrity="sha256-hVVnYaiADRTO2PzUGmuLJr8BLUSjGIZsDYGmIJLv2b8=" crossorigin="anonymous"></script>
+        <script src="https://cdn.rawgit.com/Laralum/Laralum/0d0e7bbe/src/Assets/js/uikit.min.js" ></script>
+        <link rel="stylesheet" href="https://code.ionicframework.com/ionicons/2.0.1/css/ionicons.min.css">
+        <!-- CSS Injection for packages -->
+        @foreach($packages as $package)
+            {!! Laralum\Laralum\Injector::inject('style', $package) !!}
+        @endforeach
 
-    <title>@yield('title') - {{ Laralum\Settings\Models\Settings::first()->appname }}</title>
+        @include('laralum::assets.css')
 
-    <!-- Icons -->
-    <link href="https://cdn.rawgit.com/Laralum/Laralum/master/src/Assets/css/font-awesome.min.css" rel="stylesheet">
-    <link href="https://cdn.rawgit.com/Laralum/Laralum/master/src/Assets/css/simple-line-icons.css" rel="stylesheet">
+        @yield('css')
 
-    <!-- Main styles for this application -->
-    <link href="https://cdn.rawgit.com/Laralum/Laralum/master/src/Assets/css/style.css" rel="stylesheet">
-
-    <!-- Material design icons CSS -->
-    <link rel="stylesheet" href="https://cdn.materialdesignicons.com/1.8.36/css/materialdesignicons.min.css">
-
-    <!-- Sweetalert2 CSS -->
-    <link rel="stylesheet" href="https://cdn.jsdelivr.net/sweetalert2/6.3.8/sweetalert2.min.css">
-
-    <!-- CSS Injection for packages -->
-    @foreach($packages as $package)
-        {!! Laralum\Laralum\Injector::inject('style', $package) !!}
-    @endforeach
-
-    @include('laralum::assets.css')
-    @yield('css')
-
-    <!-- Charts Assets -->
-    {!! ConsoleTVs\Charts\Facades\Charts::assets() !!}
-
-</head>
-
-<!-- BODY options, add following classes to body to change options
-
-// Header options
-1. '.header-fixed'					- Fixed Header
-
-// Sidebar options
-1. '.sidebar-fixed'					- Fixed Sidebar
-2. '.sidebar-hidden'				- Hidden Sidebar
-3. '.sidebar-off-canvas'		- Off Canvas Sidebar
-4. '.sidebar-compact'				- Compact Sidebar Navigation (Only icons)
-
-// Aside options
-1. '.aside-menu-fixed'			- Fixed Aside Menu
-2. '.aside-menu-hidden'			- Hidden Aside Menu
-3. '.aside-menu-off-canvas'	- Off Canvas Aside Menu
-
-// Footer options
-1. '.footer-fixed'						- Fixed footer
-
--->
-
-<body class="app header-fixed sidebar-fixed aside-menu-fixed aside-menu-hidden">
-    <header class="app-header navbar">
-        <button class="navbar-toggler mobile-sidebar-toggler hidden-lg-up" type="button">☰</button>
-        <a class="navbar-brand" href="{{ route('laralum::index') }}"></a>
-        <ul class="nav navbar-nav hidden-md-down">
-            <li class="nav-item">
-                <a class="nav-link navbar-toggler sidebar-toggler" href="#">☰</a>
-            </li>
-        </ul>
-        <ul class="nav navbar-nav ml-auto">
-            <li class="nav-item dropdown" style="padding-right: 15px;">
-                <a class="nav-link dropdown-toggle nav-link" data-toggle="dropdown" href="#" role="button" aria-haspopup="true" aria-expanded="false">
-                    <span class="hidden-md-down">{{ Auth::user()->name }}</span>
-                </a>
-                <div class="dropdown-menu dropdown-menu-right">
-                    <a class="dropdown-item" href="{{ route('laralum::logout') }}" onclick="event.preventDefault(); document.getElementById('logout-form').submit();">
-                         <i class="fa fa-lock"></i> Logout
-                     </a>
-                </div>
-            </li>
-
-        </ul>
-    </header>
-    <form id="logout-form" action="{{ route('logout') }}" method="POST" style="display: none;">
-        {{ csrf_field() }}
-    </form>
-    <div class="app-body">
-        <div class="sidebar">
-            <nav class="sidebar-nav">
-                <ul class="nav">
-                    <li class="nav-title">
-                        Official Modules
-                    </li>
-                    @foreach($packages as $package)
-                        @php $menu = Laralum\Laralum\Packages::menu($package); @endphp
-                        @if( $menu and array_key_exists('items', $menu) )
-                            <li class="nav-item nav-dropdown">
-                                <a class="nav-link nav-dropdown-toggle" href="#"><i class="icon-star"></i> {{ array_key_exists('name', $menu) ? $menu['name'] : ucfirst($package) }}</a>
-                                <ul class="nav-dropdown-items">
-                                    @foreach($menu['items'] as $item)
-                                        <li class="nav-item">
-                                            @if( array_key_exists('text', $item) and array_key_exists('link', $item) )
-                                                <a class="nav-link" href="{{ $item['link'] }}"><i class="icon-star"></i> {{ $item['text'] }}</a>
-                                            @elseif( array_key_exists('text', $item) and array_key_exists('route', $item) )
-                                                <a class="nav-link" href="{{ route($item['route']) }}"><i class="icon-star"></i> {{ $item['text'] }}</a>
-                                            @endif
+        <!-- Charts Assets -->
+        {!! ConsoleTVs\Charts\Facades\Charts::assets() !!}
+    </head>
+    <body>
+        <div uk-sticky="media: 960" class="uk-navbar-container tm-navbar-container uk-sticky uk-active" style="position: fixed; top: 0px; width: 1903px;">
+            <div class="uk-container uk-container-expand">
+                <nav uk-navbar="mode: click; offset: -17;">
+                    <div class="uk-navbar-left">
+                        <a id="sidebar_toggle" class="uk-navbar-toggle" uk-navbar-toggle-icon href="#"></a>
+                        <a href="{{ route('laralum::index') }}" class="uk-navbar-item uk-logo">
+                            {{ $settings->appname }}
+                        </a>
+                    </div>
+                    <div class="uk-navbar-right uk-light">
+                        <ul class="uk-navbar-nav">
+                            <li class="uk-active">
+                                <a href="#">{{ Auth::user()->name }} &nbsp;<span class="ion-ios-arrow-down"></span></a>
+                                <div class="uk-navbar-dropdown">
+                                   <ul class="uk-nav uk-navbar-dropdown-nav">
+                                        <li class="uk-nav-header">Actions</li>
+                                        <li>
+                                            <a href="{{ route('logout') }}" onclick="event.preventDefault(); document.getElementById('logout-form').submit();">
+                                                Logout
+                                            </a>
+                                            <form id="logout-form" action="{{ route('logout') }}" method="POST" style="display: none;">
+                                                {{ csrf_field() }}
+                                            </form>
                                         </li>
-                                    @endforeach
-                                </ul>
+                                   </ul>
+                                </div>
                             </li>
-                        @elseif( $menu and array_key_exists('item', $menu) )
-                            @if( array_key_exists('text', $menu['item']) and array_key_exists('link', $menu['item']) )
-                                <li class="nav-item">
-                                    <a class="nav-link" href="{{ $menu['item']['link'] }}"><i class="icon-star"></i> {{ $menu['item']['text'] }}</a>
-                                </li>
-                            @elseif( array_key_exists('text', $menu['item']) and array_key_exists('route', $menu['item']) )
-                                <li class="nav-item">
-                                    <a class="nav-link" href="{{ route($menu['item']['route']) }}"><i class="icon-star"></i> {{ $menu['item']['text'] }}</a>
-                                </li>
-                            @endif
-                        @endif
-                    @endforeach
-
-
-                </ul>
-            </nav>
-        </div>
-
-        <!-- Main content -->
-        <main class="main">
-
-            <!-- Breadcrumb -->
-            <ol class="breadcrumb">
-                <li class="breadcrumb-item">Home</li>
-                <li class="breadcrumb-item"><a href="#">Admin</a></li>
-                <li class="breadcrumb-item active">Dashboard</li>
-            </ol>
-
-
-            <div class="container-fluid">
-                <div class="animated fadeIn">
-                    @yield('content')
-                </div>
-
+                        </ul>
+                    </div>
+                </nav>
             </div>
-            <!-- /.conainer-fluid -->
-        </main>
-
-
-    </div>
-
-    <footer class="app-footer">
-        <a href="{{ url('/') }}">{{ Laralum\Settings\Models\Settings::first()->appname }}</a> © 2017 Company.
-        <span class="float-right">Powered by <a href="http://github.com/Laralum/Laralum">Laralum</a>
-        </span>
-    </footer>
-
-    <!-- Bootstrap and necessary plugins -->
-    <script src="https://cdn.rawgit.com/Laralum/Laralum/master/src/Assets/bower_components/jquery/dist/jquery.min.js"></script>
-    <script src="https://cdn.rawgit.com/Laralum/Laralum/master/src/Assets/bower_components/tether/dist/js/tether.min.js"></script>
-    <script src="https://cdn.rawgit.com/Laralum/Laralum/master/src/Assets/bower_components/bootstrap/dist/js/bootstrap.min.js"></script>
-    <script src="https://cdn.rawgit.com/Laralum/Laralum/master/src/Assets/bower_components/pace/pace.min.js"></script>
-
-
-    <!-- Plugins and scripts required by all views -->
-    <script src="https://cdn.rawgit.com/Laralum/Laralum/master/src/Assets/bower_components/chart.js/dist/Chart.min.js"></script>
-
-
-    <!-- GenesisUI main scripts -->
-
-    <script src="https://cdn.rawgit.com/Laralum/Laralum/master/src/Assets/js/app.js"></script>
-    <script src="https://cdn.jsdelivr.net/sweetalert2/6.3.8/sweetalert2.min.js"></script>
-    @include('laralum::assets.js')
-    @yield('js')
-
-    <!-- JS Injection for packages -->
-    @foreach($packages as $package)
-        {!! Laralum\Laralum\Injector::inject('script', $package) !!}
-    @endforeach
-
-</body>
-
+        </div>
+        <div id="sidebar" class="tm-sidebar-left uk-background">
+            <center>
+                <div class="user">
+                    <img id="avatar" width="100" class="uk-border-circle" src="https://cdn.rawgit.com/Laralum/Laralum/0d0e7bbe/src/Assets/images/avatar.jpg" />
+                    <div class="uk-margin-top"></div>
+                    <div id="name">{{ Auth::user()->name }}</div>
+                    <div id="email">{{ Auth::user()->email }}</div>
+                    <span id="status" data-enabled="true" data-online-text="Online" data-away-text="Away" data-interval="15000" class="uk-margin-top uk-label uk-label-success"></span>
+                </div>
+                <br />
+            </center>
+            <ul class="uk-nav uk-nav-default">
+                @foreach($packages as $package)
+                    @php $menu = Laralum\Laralum\Packages::menu($package); @endphp
+                    @if( $menu and array_key_exists('items', $menu) )
+                        <li class="uk-nav-header">
+                            {{ ucfirst($package) }}
+                        </li>
+                        @foreach($menu['items'] as $item)
+                            <li>
+                                @if( array_key_exists('text', $item) and array_key_exists('link', $item) )
+                                    <a href="{{ $item['link'] }}">{{ $item['text'] }}</a>
+                                @elseif( array_key_exists('text', $item) and array_key_exists('route', $item) )
+                                    <a href="{{ route($item['route']) }}">{{ $item['text'] }}</a>
+                                @endif
+                            </li>
+                        @endforeach
+                    @endif
+                @endforeach
+            </ul>
+        </div>
+        <div class="content-padder content-background">
+            <div class="uk-section-small uk-section-default header">
+                <div class="uk-container uk-container-large">
+                    <h1><span class="@yield('icon')"></span> @yield('title')</h1>
+                    <p>
+                        @yield('subtitle')
+                    </p>
+                    @yield('breadcrumb')
+                </div>
+            </div>
+            <div class="uk-section-small">
+                @yield('content')
+            </div>
+        </div>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.5.0/Chart.min.js" integrity="sha256-GcknncGKzlKm69d+sp+k3A2NyQE+jnu43aBl6rrDN2I=" crossorigin="anonymous"></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery.transit/0.9.12/jquery.transit.min.js" integrity="sha256-rqEXy4JTnKZom8mLVQpvni3QHbynfjPmPxQVsPZgmJY=" crossorigin="anonymous"></script>
+        <script src="https://cdn.rawgit.com/Laralum/Laralum/0d0e7bbe/src/Assets/js/script.js"></script>
+        <script src="https://cdn.rawgit.com/Laralum/Laralum/0d0e7bbe/src/Assets/js/status.js"></script>
+    </body>
 </html>

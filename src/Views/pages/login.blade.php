@@ -44,7 +44,8 @@ $settings = Laralum\Settings\Models\Settings::first();
                                     <center>
                                         <h2>{{ $settings->appname }}</h2><br />
                                     </center>
-                                    <form method="POST">
+                                    <form method="POST" action="{{ route('laralum::login_post') }}">
+                                        {{ csrf_field() }}
                                         <fieldset class="uk-fieldset">
 
                                             <div class="uk-margin">

@@ -12,8 +12,4 @@ return [
         'base_url'  => '/administration',
     ],
 
-    'general' => [
-        'name' => 'Laralum',
-    ],
-
 ];

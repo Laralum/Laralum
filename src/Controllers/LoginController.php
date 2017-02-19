@@ -38,5 +38,5 @@ class LoginController extends Controller
 
         return redirect()->route('laralum::login')->with('error', trans('auth.failed'))->withInput();
     }
-    
+
 }
