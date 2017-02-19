@@ -1,15 +1,8 @@
-<!--
- * CoreUI - Open Source Bootstrap Admin Template
- * @version v1.0.0-alpha.3
- * @link http://coreui.io
- * Copyright (c) 2017 creativeLabs Łukasz Holeczek
- * @license MIT
- -->
+@php $packages = Laralum\Laralum\Packages::all(); @endphp
 <!DOCTYPE html>
 <html lang="en">
 
 <head>
-    @php $packages = Laralum\Laralum\Packages::all(); @endphp
 
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
@@ -83,13 +76,17 @@
                     <span class="hidden-md-down">{{ Auth::user()->name }}</span>
                 </a>
                 <div class="dropdown-menu dropdown-menu-right">
-                    <a class="dropdown-item" href="#"><i class="fa fa-lock"></i> Logout</a>
+                    <a class="dropdown-item" href="{{ route('laralum::logout') }}" onclick="event.preventDefault(); document.getElementById('logout-form').submit();">
+                         <i class="fa fa-lock"></i> Logout
+                     </a>
                 </div>
             </li>
 
         </ul>
     </header>
-
+    <form id="logout-form" action="{{ route('logout') }}" method="POST" style="display: none;">
+        {{ csrf_field() }}
+    </form>
     <div class="app-body">
         <div class="sidebar">
             <nav class="sidebar-nav">
@@ -175,6 +172,7 @@
     <!-- GenesisUI main scripts -->
 
     <script src="https://cdn.rawgit.com/Laralum/Laralum/master/src/Assets/js/app.js"></script>
+    <script src="https://cdn.jsdelivr.net/sweetalert2/6.3.8/sweetalert2.min.js"></script>
     @include('laralum::assets.js')
     @yield('js')
 
