@@ -13,10 +13,10 @@ $packages = Laralum\Laralum\Packages::all();
         <meta name="author" content="Erik Campobadal">
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-        <link rel="stylesheet" href="https://cdn.rawgit.com/Laralum/Laralum/0d0e7bbe/src/Assets/css/uikit.min.css" />
-        <link rel="stylesheet" href="https://cdn.rawgit.com/Laralum/Laralum/0d0e7bbe/src/Assets/css/style.css" />
+        <link rel="stylesheet" href="https://cdn.rawgit.com/Laralum/Laralum/7aea0ec0/src/Assets/css/uikit.min.css" />
+        <link rel="stylesheet" href="https://cdn.rawgit.com/Laralum/Laralum/7aea0ec0/src/Assets/css/style.css" />
         <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.1.1/jquery.min.js" integrity="sha256-hVVnYaiADRTO2PzUGmuLJr8BLUSjGIZsDYGmIJLv2b8=" crossorigin="anonymous"></script>
-        <script src="https://cdn.rawgit.com/Laralum/Laralum/0d0e7bbe/src/Assets/js/uikit.min.js" ></script>
+        <script src="https://cdn.rawgit.com/Laralum/Laralum/7aea0ec0/src/Assets/js/uikit.min.js" ></script>
         <link rel="stylesheet" href="https://code.ionicframework.com/ionicons/2.0.1/css/ionicons.min.css">
 
         <!-- CSS Injection for packages -->
@@ -111,8 +111,8 @@ $packages = Laralum\Laralum\Packages::all();
         </div>
         <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.5.0/Chart.min.js" integrity="sha256-GcknncGKzlKm69d+sp+k3A2NyQE+jnu43aBl6rrDN2I=" crossorigin="anonymous"></script>
         <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery.transit/0.9.12/jquery.transit.min.js" integrity="sha256-rqEXy4JTnKZom8mLVQpvni3QHbynfjPmPxQVsPZgmJY=" crossorigin="anonymous"></script>
-        <script src="https://cdn.rawgit.com/Laralum/Laralum/0d0e7bbe/src/Assets/js/script.js"></script>
-        <script src="https://cdn.rawgit.com/Laralum/Laralum/0d0e7bbe/src/Assets/js/status.js"></script>
+        <script src="https://cdn.rawgit.com/Laralum/Laralum/7aea0ec0/src/Assets/js/script.js"></script>
+        <script src="https://cdn.rawgit.com/Laralum/Laralum/7aea0ec0/src/Assets/js/status.js"></script>
 
         @include('laralum::assets.js')
         @yield('js')
