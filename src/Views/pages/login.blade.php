@@ -51,7 +51,7 @@ $settings = Laralum\Settings\Models\Settings::first();
                                             <div class="uk-margin">
                                                 <div class="uk-position-relative">
                                                     <span class="uk-form-icon ion-android-person"></span>
-                                                    <input name="email" class="uk-input" type="text" placeholder="Email">
+                                                    <input value="{{ old('email') }}" name="email" class="uk-input" type="text" placeholder="Email">
                                                 </div>
                                             </div>
 

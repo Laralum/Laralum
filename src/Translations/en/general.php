@@ -36,5 +36,7 @@ return [
     'remember_me'   => 'Remember Me',
     'submit'        => 'Submit',
     'loading'       => 'Loading',
+    'online'        => 'Online',
+    'away'          => 'Away',
 
 ];
