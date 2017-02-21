@@ -38,5 +38,11 @@ return [
     'loading'       => 'Loading',
     'online'        => 'Online',
     'away'          => 'Away',
+    'proceed'       => 'Proceed',
+    'perform_action'        => 'Are you sure you want to perform this action ?',
+    'confirmation_page'     => 'Confirmation Page',
+    'take_me_back'          => 'Take me back',
+    'confirmation_proceed'  => 'Are you sure you want to proceed?',
+    'confirmation_info'     => 'This action cannot be undone.',
 
 ];

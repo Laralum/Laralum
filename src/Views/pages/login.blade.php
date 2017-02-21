@@ -44,7 +44,7 @@ $settings = Laralum\Settings\Models\Settings::first();
                                     <center>
                                         <h2>{{ $settings->appname }}</h2><br />
                                     </center>
-                                    <form method="POST" action="{{ route('laralum::login_post') }}">
+                                    <form method="POST" action="{{ route('laralum::login_post') }}" class="uk-form-stacked">
                                         {{ csrf_field() }}
                                         <fieldset class="uk-fieldset">
 
@@ -71,17 +71,6 @@ $settings = Laralum\Settings\Models\Settings::first();
                                                     <span class="ion-forward"></span>&nbsp; Login
                                                 </button>
                                             </div>
-
-                                            <hr />
-
-                                            <center>
-                                                <p>
-                                                    You don't have an account yet?
-                                                </p>
-                                                <a href="register.html" class="uk-button uk-button-default">
-                                                    <span class="ion-android-person-add"></span>&nbsp; Register
-                                                </a>
-                                            </center>
                                         </fieldset>
                                     </form>
                                 </div>
