@@ -84,10 +84,14 @@ $packages = Laralum\Laralum\Packages::all();
                         </li>
                         @foreach($menu['items'] as $item)
                             <li>
-                                @if( array_key_exists('text', $item) and array_key_exists('link', $item) )
-                                    <a href="{{ $item['link'] }}">{{ $item['text'] }}</a>
-                                @elseif( array_key_exists('text', $item) and array_key_exists('route', $item) )
-                                    <a href="{{ route($item['route']) }}">{{ $item['text'] }}</a>
+                                @if( (array_key_exists('text', $item) or array_key_exists('trans', $item)) and array_key_exists('link', $item) )
+                                    <a href="{{ $item['link'] }}">
+                                        {{ array_key_exists('trans', $item) ? __($item['trans']) : $item['text'] }}
+                                    </a>
+                                @elseif( (array_key_exists('text', $item) or array_key_exists('trans', $item)) and array_key_exists('route', $item) )
+                                    <a href="{{ route($item['route']) }}">
+                                        {{ array_key_exists('trans', $item) ? __($item['trans']) : $item['text'] }}
+                                    </a>
                                 @endif
                             </li>
                         @endforeach
