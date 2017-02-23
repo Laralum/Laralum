@@ -67,7 +67,7 @@ $packages = Laralum\Laralum\Packages::all();
         <div id="sidebar" class="tm-sidebar-left uk-background">
             <center>
                 <div class="user">
-                    <img id="avatar" width="100" class="uk-border-circle" src="{{ Laralum\Users\Models\User::findOrFail(Auth::id())->avatar() }}" />
+                    <img id="avatar" style="max-width:100px;max-height:100px;" class="uk-border-circle" src="{{ Laralum\Users\Models\User::findOrFail(Auth::id())->avatar() }}" />
                     <div class="uk-margin-top"></div>
                     <div id="name" class="uk-text-truncate">{{ Auth::user()->name }}</div>
                     <div id="email" class="uk-text-truncate">{{ Auth::user()->email }}</div>
