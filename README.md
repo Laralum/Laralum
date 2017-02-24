@@ -50,9 +50,31 @@ php artisan:migrate
 
 ### Packages
 
-laralum/laralum, requires basic packages such permissions, roles, users... but there are also optional packages such advertisements, tickets...
+Laralum requires basic packages such permissions, roles, users... but there are also optional packages such advertisements, tickets...
 
-For install an optional package, you should follow the documentation of each package on his README
+To install an optional package, you should follow the documentation of each package on the specified README
+
+## Package Menu
+
+The package menus can be defined creating a ```Menu.json``` file in the /src/ of your package.
+
+Sample:
+
+```json
+{
+    "items": [
+        {
+            "text": "Permission List",
+            "url": "https://google.com"
+        },
+        {
+            "trans": "laralum_permissions::general.create_permission",
+            "route": "laralum::permissions.create"
+        }
+    ]
+}
+
+```
 
 ## Injections
 
@@ -80,3 +102,15 @@ The list of the currently supported injectors is:
 -   **laralum.auth (laralum.auth.php)**
     This will inject the php code inside laralum.auth.php inside the laralum.auth middleware used across
     all the administration panel.
+
+-   **user (user.php)**
+    This will inject the php *array* that is returned in user.php inside the user menu on the admin panel.
+
+    ```php
+    return  [
+        [
+            'text'  => 'item Text',
+            'url'   => 'https://google.com'
+        ]
+    ]
+    ```

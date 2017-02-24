@@ -44,9 +44,23 @@ $packages = Laralum\Laralum\Packages::all();
                     <div class="uk-navbar-right uk-light">
                         <ul class="uk-navbar-nav">
                             <li class="uk-active">
-                                <a href="#">{{ Auth::user()->name }} &nbsp;<span class="ion-ios-arrow-down"></span></a>
+                                <a id="navbar_name" href="#">{{ Auth::user()->name }} &nbsp;<span class="ion-ios-arrow-down"></span></a>
                                 <div class="uk-navbar-dropdown">
-                                   <ul class="uk-nav uk-navbar-dropdown-nav">
+                                    <ul class="uk-nav uk-navbar-dropdown-nav">
+                                        <!-- User Injector -->
+                                        @foreach($packages as $package)
+                                            @php $items = \Laralum\Laralum\Injector::inject('user', $package) @endphp
+                                            @if($items)
+                                                <li class="uk-nav-header">{{ $package }}</li>
+                                                @foreach($items as $item)
+                                                    <li>
+                                                        <a href="{{ $item['url'] }}">
+                                                            {{ $item['text'] }}
+                                                        </a>
+                                                    </li>
+                                                @endforeach
+                                            @endif
+                                        @endforeach
                                         <li class="uk-nav-header">Actions</li>
                                         <li>
                                             <a href="{{ route('logout') }}" onclick="event.preventDefault(); document.getElementById('logout-form').submit();">
@@ -56,7 +70,7 @@ $packages = Laralum\Laralum\Packages::all();
                                                 {{ csrf_field() }}
                                             </form>
                                         </li>
-                                   </ul>
+                                    </ul>
                                 </div>
                             </li>
                         </ul>
