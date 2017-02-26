@@ -51,12 +51,24 @@ $packages = Laralum\Laralum\Packages::all();
                                         @foreach($packages as $package)
                                             @php $items = \Laralum\Laralum\Injector::inject('user', $package) @endphp
                                             @if($items)
-                                                <li class="uk-nav-header">{{ $package }}</li>
+                                                @php
+                                                $counter = 0;
+                                                    foreach ($items as $item) {
+                                                        $counter = $counter + (isset($item['counter']) ? $item['counter'] : 0);
+                                                    }
+                                                @endphp
+                                                <li class="uk-nav-header">{{ $package }} @if($counter) <span class="uk-badge">{{$counter}}</span> @endif
+                                                </li>
                                                 @foreach($items as $item)
                                                     <li>
                                                         <a href="{{ $item['url'] }}">
                                                             {{ $item['text'] }}
+                                                            @php
+                                                            $show = isset($item['counter']) ? $item['counter'] : false;
+                                                            @endphp
+                                                            @if($show) <span class="uk-badge">{{$show}}</span> @endif
                                                         </a>
+
                                                     </li>
                                                 @endforeach
                                             @endif
