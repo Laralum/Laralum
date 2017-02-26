@@ -34,7 +34,7 @@ $packages = Laralum\Laralum\Packages::all();
     <body>
         <div uk-sticky class="uk-navbar-container tm-navbar-container uk-active">
             <div class="uk-container uk-container-expand">
-                <nav uk-navbar="mode: click; offset: -17;">
+                <nav class="uk-navbar-container" uk-navbar>
                     <div class="uk-navbar-left">
                         <a id="sidebar_toggle" class="uk-navbar-toggle" uk-navbar-toggle-icon href="#"></a>
                         <a href="{{ route('laralum::index') }}" class="uk-navbar-item uk-logo">
@@ -45,7 +45,7 @@ $packages = Laralum\Laralum\Packages::all();
                         <ul class="uk-navbar-nav">
                             <li class="uk-active">
                                 <a id="navbar_name" href="#">{{ Auth::user()->name }} &nbsp;<span class="ion-ios-arrow-down"></span></a>
-                                <div class="uk-navbar-dropdown">
+                                <div uk-dropdown="pos: bottom-right; mode: click; offset: -17;">
                                     <ul class="uk-nav uk-navbar-dropdown-nav">
                                         <!-- User Injector -->
                                         @foreach($packages as $package)
