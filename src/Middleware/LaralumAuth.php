@@ -24,7 +24,7 @@ class LaralumAuth
         }
 
         foreach(Packages::all() as $package) {
-            Injector::inject('laralum.base', $package);
+            Injector::inject('laralum.auth', $package);
         }
 
         return $next($request);

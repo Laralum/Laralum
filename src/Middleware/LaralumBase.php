@@ -19,14 +19,11 @@ class LaralumBase
     public function handle($request, Closure $next)
     {
         // Before request code
+
         foreach(Packages::all() as $package) {
             Injector::inject('laralum.base', $package);
         }
 
-        $response = $next($request);
-
-        // After request code
-
-        return $response;
+        return $next($request);
     }
 }
