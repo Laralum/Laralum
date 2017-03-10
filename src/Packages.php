@@ -27,8 +27,11 @@ class Packages extends Facade
     {
         // Check for Laralum packages
         $packages = [];
+        $location = __DIR__.'/../../';
 
-        foreach (scandir(__DIR__.'/../../') as $package) {
+        $files = is_dir($location) ? scandir($location) : [];
+
+        foreach ($files as $package) {
             if ($package != '.' and $package != '..' and ucfirst($package) != 'Laralum') {
                 array_push($packages, $package);
             }
@@ -44,7 +47,10 @@ class Packages extends Facade
      */
     public static function provider($package)
     {
-        $files = scandir(__DIR__.'/../../'.$package.'/src');
+        $location = __DIR__.'/../../'.$package.'/src';
+
+        $files = is_dir($location) ? scandir($location) : [];
+
         foreach ($files as $file) {
             if (strpos($file, 'ServiceProvider') !== false) {
                 return str_replace('.php', '', $file);
@@ -72,7 +78,8 @@ class Packages extends Facade
     public static function menu($package)
     {
         $dir = __DIR__.'/../../'.$package.'/src';
-        $files = scandir($dir);
+        $files = is_dir($dir) ? scandir($dir) : [];
+
         foreach ($files as $file) {
             if ($file == 'Menu.json') {
                 $file_r = file_get_contents($dir . '/' . $file);
@@ -91,7 +98,8 @@ class Packages extends Facade
     public static function submenu($package)
     {
         $dir = __DIR__.'/../../'.$package.'/src';
-        $files = scandir($dir);
+        $files = is_dir($dir) ? scandir($dir) : [];
+        
         foreach ($files as $file) {
             if ($file == 'Submenu.json') {
                 $file_r = file_get_contents($dir . '/' . $file);

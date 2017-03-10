@@ -10,6 +10,7 @@ return [
     */
     'settings' => [
         'base_url'  => '/administration',
+        'api_url'   => '/api',
     ],
 
 ];

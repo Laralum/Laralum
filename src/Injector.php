@@ -28,8 +28,8 @@ class Injector extends Facade
      public static function inject($injector, $package)
      {
          $dir = __DIR__."/../../$package/src/Injectors";
-
          $files = is_dir($dir) ? scandir($dir) : [];
+
          foreach ($files as $file) {
              if (substr($file, 0, -4) == $injector and substr($file, -4) == '.php') {
                  $file = $dir . '/' . $file;
