@@ -3,9 +3,23 @@
 namespace Laralum\Laralum;
 
 use Illuminate\Support\ServiceProvider;
+use Laralum\Permissions\PermissionsChecker;
 
 class LaralumServiceProvider extends ServiceProvider
 {
+    /**
+     * The mandatory permissions for the module.
+     *
+     * @var array
+     */
+    protected $permissions = [
+        [
+            'name' => 'Laralum Access',
+            'slug' => 'laralum::access',
+            'desc' => "Grants access to all laralum infrastructure",
+        ],
+    ];
+
     /**
      * Bootstrap the application services.
      *
@@ -21,11 +35,7 @@ class LaralumServiceProvider extends ServiceProvider
 
         $this->publishes([
             __DIR__.'/../config/laralum.php' => config_path('laralum.php'),
-        ], 'config');
-
-        $this->publishes([
-            __DIR__.'/Assets' => public_path('vendor/laralum/laralum'),
-        ], 'assets');
+        ], 'laralum_config');
 
         $this->loadViewsFrom(__DIR__.'/Views', 'laralum');
 
@@ -37,7 +47,8 @@ class LaralumServiceProvider extends ServiceProvider
         $this->app->register('ConsoleTVs\\Charts\\ChartsServiceProvider');
         $this->app->register('Unicodeveloper\\Identify\\IdentifyServiceProvider');
 
-        // Manually register other aliases
+        // Make sure the permissions are OK
+        PermissionsChecker::check($this->permissions);
 
         // Mass service provider registerer & menu creator
         foreach (Packages::all() as $package) {
