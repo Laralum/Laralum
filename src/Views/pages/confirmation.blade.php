@@ -2,6 +2,12 @@
 @section('icon', 'ion-alert-circled')
 @section('title', trans('laralum::general.confirmation_page'))
 @section('subtitle', trans('laralum::general.perform_action'))
+@section('breadcrumb')
+    <ul class="uk-breadcrumb">
+        <li><a href="{{ route('laralum::index') }}">@lang('laralum::general.home')</a></li>
+        <li><span href="">@lang('laralum::general.confirmation_page')</span></li>
+    </ul>
+@endsection
 @section('content')
     <div class="uk-container uk-container-large">
         <div uk-grid>
