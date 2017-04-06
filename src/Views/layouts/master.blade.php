@@ -21,7 +21,7 @@ $packages = Laralum\Laralum\Packages::all();
         <link rel="stylesheet" href="https://cdn.rawgit.com/Laralum/Laralum/95d11fe4/src/Assets/css/notyf.min.css" />
         <!-- CSS Injection for packages -->
         @foreach($packages as $package)
-            {!! Laralum\Laralum\Injector::inject('style', $package) !!}
+            {!! \Laralum\Laralum\Injector::inject('style', $package) !!}
         @endforeach
 
         @include('laralum::assets.css')
@@ -150,7 +150,7 @@ $packages = Laralum\Laralum\Packages::all();
 
         <!-- JS Injection for packages -->
         @foreach($packages as $package)
-            {!! Laralum\Laralum\Injector::inject('script', $package) !!}
+            {!! \Laralum\Laralum\Injector::inject('script', $package) !!}
         @endforeach
     </body>
 </html>
