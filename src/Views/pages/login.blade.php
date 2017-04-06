@@ -17,6 +17,9 @@ $settings = Laralum\Settings\Models\Settings::first();
         <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.1.1/jquery.min.js" integrity="sha256-hVVnYaiADRTO2PzUGmuLJr8BLUSjGIZsDYGmIJLv2b8=" crossorigin="anonymous"></script>
         <script src="https://cdn.rawgit.com/Laralum/Laralum/0d0e7bbe/src/Assets/js/uikit.min.js" ></script>
         <link rel="stylesheet" href="https://code.ionicframework.com/ionicons/2.0.1/css/ionicons.min.css">
+        @foreach($packages as $package)
+            {!! \Laralum\Laralum\Injector::inject('style', $package) !!}
+        @endforeach
     </head>
     <body>
         <div uk-sticky="media: 960" class="uk-navbar-container tm-navbar-container uk-sticky uk-active" style="position: fixed; top: 0px; width: 1903px;">
@@ -83,5 +86,8 @@ $settings = Laralum\Settings\Models\Settings::first();
         </div>
         <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.5.0/Chart.min.js" integrity="sha256-GcknncGKzlKm69d+sp+k3A2NyQE+jnu43aBl6rrDN2I=" crossorigin="anonymous"></script>
         <script src="https://cdn.rawgit.com/Laralum/Laralum/0d0e7bbe/src/Assets/js/script.js"></script>
+        @foreach($packages as $package)
+            {!! \Laralum\Laralum\Injector::inject('script', $package) !!}
+        @endforeach
     </body>
 </html>
