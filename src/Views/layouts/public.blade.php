@@ -10,6 +10,10 @@
         <title>@yield('title') - {{ $settings->appname }}</title>
         <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
 
+        @foreach($packages as $package)
+            {!! \Laralum\Laralum\Injector::inject('style', $package) !!}
+        @endforeach
+
         @yield('css')
     </head>
     <body>
@@ -47,6 +51,9 @@
         @yield('content')
 
         <!-- jQuery first -->
+        @foreach($packages as $package)
+            {!! \Laralum\Laralum\Injector::inject('script', $package) !!}
+        @endforeach
         @yield('js')
     </body>
 </html>
