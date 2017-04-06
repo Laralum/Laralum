@@ -64,6 +64,12 @@ $settings = Laralum\Settings\Models\Settings::first();
                                                     <input name="password" class="uk-input" type="password" placeholder="Password">
                                                 </div>
                                             </div>
+                                            
+                                            <div class="uk-margin">
+                                                <div class="uk-position-relative">
+                                                    <label><input name="remember" {{ !old('remember') ?: 'checked' }} class="uk-checkbox" type="checkbox"> Remember Me</label><br />
+                                                </div>
+                                            </div>
 
                                             <div class="uk-margin">
                                                 <a href="#">Forgot your password?</a>
