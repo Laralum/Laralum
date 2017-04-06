@@ -1,6 +1,6 @@
 @php
-$settings = Laralum\Settings\Models\Settings::first();
-$packages = Laralum\Laralum\Packages::all();
+$settings = \Laralum\Settings\Models\Settings::first();
+$packages = \Laralum\Laralum\Packages::all();
 @endphp
 <!DOCTYPE html>
 <html>
