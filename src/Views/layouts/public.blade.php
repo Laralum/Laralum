@@ -1,3 +1,6 @@
+@php
+$packages = Laralum\Laralum\Packages::all();
+@endphp
 <!DOCTYPE html>
 <html lang="en">
     <head>
