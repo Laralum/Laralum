@@ -13,4 +13,24 @@ return [
         'api_url'   => '/api',
     ],
 
+    /*
+    |--------------------------------------------------------------------------
+    | Laralum menu injector
+    |--------------------------------------------------------------------------
+    |
+    | This array will be injected into the laralum menu, you can add everything
+    | you want on it and it will be available at any page on laralum's menu.
+    */
+    'menu' => [
+        [
+            'title' => 'Other',
+            'items' => [
+                [
+                    'text' => 'Homepage',
+                    'link' => '/',
+                ],
+            ],
+        ],
+    ],
+
 ];

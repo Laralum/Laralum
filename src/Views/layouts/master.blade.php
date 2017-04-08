@@ -125,6 +125,28 @@ $packages = \Laralum\Laralum\Packages::all();
                         @endforeach
                     @endif
                 @endforeach
+                @if (array_key_exists('menu', config('laralum')))
+                    @foreach (config('laralum.menu') as $custom_menu)
+                        <li class="uk-nav-header">
+                            {{ $custom_menu['title'] }}
+                        </li>
+                        @foreach ($custom_menu['items'] as $custom_item)
+                            @if (array_key_exists('text', $custom_item) or array_key_exists('trans', $custom_item))
+                                <li>
+                                    @if (array_key_exists('link', $custom_item))
+                                        <a href="{{ url($custom_item['link']) }}">
+                                            {{ array_key_exists('trans', $custom_item) ? __($custom_item['trans']) : $custom_item['text'] }}
+                                        </a>
+                                    @elseif (array_key_exists('route', $custom_item))
+                                        <a href="{{ route($custom_item['route']) }}">
+                                            {{ array_key_exists('trans', $custom_item) ? __($custom_item['trans']) : $custom_item['text'] }}
+                                        </a>
+                                    @endif
+                                </li>
+                            @endif
+                        @endforeach
+                    @endforeach
+                @endif
             </ul>
         </div>
         <div class="content-padder content-background">
