@@ -8,19 +8,21 @@ $packages = \Laralum\Laralum\Packages::all();
         <title>@yield('title') - {{ $settings->appname }}</title>
 
         <meta charset="UTF-8">
-        <meta name="description" content="Clean and responsive administration panel">
-        <meta name="keywords" content="Admin,Panel,HTML,CSS,XML,JavaScript">
-        <meta name="author" content="Erik Campobadal">
+        <meta name="description" content="The modular laravel administration panel">
+        <meta name="keywords" content="Laralum,Admin,Panel,CMS,Laravel,Modern,Developers">
+        <meta name="author" content="Erik Campobadal, Aitor Riba">
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-        <link rel="stylesheet" href="https://cdn.rawgit.com/Laralum/Laralum/95d11fe4/src/Assets/css/uikit.min.css" />
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/uikit/3.0.0-beta.20/css/uikit.min.css" integrity="sha256-k8IzyP/qSivihqS5ogICYMqmuacc6Op6HQrFMGRrdfw=" crossorigin="anonymous" />
         <link rel="stylesheet" href="https://cdn.rawgit.com/Laralum/Laralum/95d11fe4/src/Assets/css/style.css" />
         <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.1.1/jquery.min.js" integrity="sha256-hVVnYaiADRTO2PzUGmuLJr8BLUSjGIZsDYGmIJLv2b8=" crossorigin="anonymous"></script>
-        <script src="https://cdn.rawgit.com/Laralum/Laralum/95d11fe4/src/Assets/js/uikit.min.js" ></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/uikit/3.0.0-beta.20/js/uikit.min.js" integrity="sha256-zg8+ewp+R2ncGBMQ3a+rhfLlef0gxfkG9zrBf+oSTQU=" crossorigin="anonymous"></script>
         <link rel="stylesheet" href="https://code.ionicframework.com/ionicons/2.0.1/css/ionicons.min.css">
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/uikit/3.0.0-beta.20/js/uikit-icons.min.js" integrity="sha256-iC7144xSYml8vsBsLNUxTvd3NAXNgnZrhv7ineC3t/o=" crossorigin="anonymous"></script>
         <link rel="stylesheet" href="https://cdn.rawgit.com/Laralum/Laralum/95d11fe4/src/Assets/css/notyf.min.css" />
+
         <!-- CSS Injection for packages -->
-        @foreach($packages as $package)
+        @foreach ($packages as $package)
             {!! \Laralum\Laralum\Injector::inject('style', $package) !!}
         @endforeach
 
@@ -48,9 +50,9 @@ $packages = \Laralum\Laralum\Packages::all();
                                 <div uk-dropdown="pos: bottom-right; mode: click; offset: -17;">
                                     <ul class="uk-nav uk-navbar-dropdown-nav">
                                         <!-- User Injector -->
-                                        @foreach($packages as $package)
+                                        @foreach ($packages as $package)
                                             @php $items = \Laralum\Laralum\Injector::inject('user', $package) @endphp
-                                            @if($items)
+                                            @if ($items)
                                                 @php
                                                 $counter = 0;
                                                     foreach ($items as $item) {
@@ -59,14 +61,14 @@ $packages = \Laralum\Laralum\Packages::all();
                                                 @endphp
                                                 <li class="uk-nav-header">{{ $package }} @if($counter) <span class="uk-badge">{{$counter}}</span> @endif
                                                 </li>
-                                                @foreach($items as $item)
+                                                @foreach ($items as $item)
                                                     <li>
                                                         <a href="{{ $item['url'] }}">
                                                             {{ $item['text'] }}
                                                             @php
                                                             $show = isset($item['counter']) ? $item['counter'] : false;
                                                             @endphp
-                                                            @if($show) <span class="uk-badge">{{$show}}</span> @endif
+                                                            @if ($show) <span class="uk-badge">{{$show}}</span> @endif
                                                         </a>
 
                                                     </li>
@@ -102,19 +104,19 @@ $packages = \Laralum\Laralum\Packages::all();
                 <br />
             </center>
             <ul class="uk-nav uk-nav-default">
-                @foreach($packages as $package)
+                @foreach ($packages as $package)
                     @php $menu = Laralum\Laralum\Packages::menu($package); @endphp
-                    @if( $menu and array_key_exists('items', $menu) )
+                    @if ($menu and array_key_exists('items', $menu) )
                         <li class="uk-nav-header">
                             {{ ucfirst($package) }}
                         </li>
-                        @foreach($menu['items'] as $item)
+                        @foreach ($menu['items'] as $item)
                             <li>
-                                @if( (array_key_exists('text', $item) or array_key_exists('trans', $item)) and array_key_exists('link', $item) )
+                                @if ((array_key_exists('text', $item) or array_key_exists('trans', $item)) and array_key_exists('link', $item))
                                     <a href="{{ $item['link'] }}">
                                         {{ array_key_exists('trans', $item) ? __($item['trans']) : $item['text'] }}
                                     </a>
-                                @elseif( (array_key_exists('text', $item) or array_key_exists('trans', $item)) and array_key_exists('route', $item) )
+                                @elseif ((array_key_exists('text', $item) or array_key_exists('trans', $item)) and array_key_exists('route', $item))
                                     <a href="{{ route($item['route']) }}">
                                         {{ array_key_exists('trans', $item) ? __($item['trans']) : $item['text'] }}
                                     </a>
@@ -139,17 +141,17 @@ $packages = \Laralum\Laralum\Packages::all();
                 @yield('content')
             </div>
         </div>
-        <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.5.0/Chart.min.js" integrity="sha256-GcknncGKzlKm69d+sp+k3A2NyQE+jnu43aBl6rrDN2I=" crossorigin="anonymous"></script>
         <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery.transit/0.9.12/jquery.transit.min.js" integrity="sha256-rqEXy4JTnKZom8mLVQpvni3QHbynfjPmPxQVsPZgmJY=" crossorigin="anonymous"></script>
         <script src="https://cdn.rawgit.com/Laralum/Laralum/95d11fe4/src/Assets/js/script.js"></script>
         <script src="https://cdn.rawgit.com/Laralum/Laralum/95d11fe4/src/Assets/js/status.js"></script>
         <script src="https://cdn.rawgit.com/Laralum/Laralum/95d11fe4/src/Assets/js/notyf.min.js"></script>
 
         @include('laralum::assets.js')
+
         @yield('js')
 
         <!-- JS Injection for packages -->
-        @foreach($packages as $package)
+        @foreach ($packages as $package)
             {!! \Laralum\Laralum\Injector::inject('script', $package) !!}
         @endforeach
     </body>
