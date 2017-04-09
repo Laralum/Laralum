@@ -54,7 +54,7 @@ $packages = \Laralum\Laralum\Packages::all();
                                             @php $items = \Laralum\Laralum\Injector::inject('user', $package) @endphp
                                             @if ($items)
                                                 @php
-                                                $counter = 0;
+                                                    $counter = 0;
                                                     foreach ($items as $item) {
                                                         $counter = $counter + (isset($item['counter']) ? $item['counter'] : 0);
                                                     }
@@ -66,7 +66,7 @@ $packages = \Laralum\Laralum\Packages::all();
                                                         <a href="{{ $item['url'] }}">
                                                             {{ $item['text'] }}
                                                             @php
-                                                            $show = isset($item['counter']) ? $item['counter'] : false;
+                                                                $show = isset($item['counter']) ? $item['counter'] : false;
                                                             @endphp
                                                             @if ($show) <span class="uk-badge">{{$show}}</span> @endif
                                                         </a>
@@ -75,10 +75,10 @@ $packages = \Laralum\Laralum\Packages::all();
                                                 @endforeach
                                             @endif
                                         @endforeach
-                                        <li class="uk-nav-header">Actions</li>
+                                        <li class="uk-nav-header">@lang('laralum::general.actions')</li>
                                         <li>
                                             <a href="{{ route('logout') }}" onclick="event.preventDefault(); document.getElementById('logout-form').submit();">
-                                                Logout
+                                                @lang('laralum::general.logout')
                                             </a>
                                             <form id="logout-form" action="{{ route('logout') }}" method="POST" style="display: none;">
                                                 {{ csrf_field() }}

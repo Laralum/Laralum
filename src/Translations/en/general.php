@@ -45,5 +45,7 @@ return [
     'confirmation_proceed'  => 'Are you sure you want to proceed?',
     'confirmation_info'     => 'This action cannot be undone.',
     'home'                  => 'Home',
+    'logout'                => 'Logout',
+    'actions'               => 'Actions',
 
 ];
