@@ -1,6 +1,7 @@
 @php
-$settings = \Laralum\Settings\Models\Settings::first();
-$packages = \Laralum\Laralum\Packages::all();
+    $settings = \Laralum\Settings\Models\Settings::first();
+    $packages = \Laralum\Laralum\Packages::all();
+    $user = \Laralum\Users\Models\User::findOrFail(Auth::id());
 @endphp
 <!DOCTYPE html>
 <html>
@@ -111,17 +112,33 @@ $packages = \Laralum\Laralum\Packages::all();
                             {{ ucfirst($package) }}
                         </li>
                         @foreach ($menu['items'] as $item)
-                            <li>
-                                @if ((array_key_exists('text', $item) or array_key_exists('trans', $item)) and array_key_exists('link', $item))
-                                    <a href="{{ $item['link'] }}">
-                                        {{ array_key_exists('trans', $item) ? __($item['trans']) : $item['text'] }}
-                                    </a>
-                                @elseif ((array_key_exists('text', $item) or array_key_exists('trans', $item)) and array_key_exists('route', $item))
-                                    <a href="{{ route($item['route']) }}">
-                                        {{ array_key_exists('trans', $item) ? __($item['trans']) : $item['text'] }}
-                                    </a>
+                            @if (array_key_exists('permission', $item))
+                                @if ($user->hasPermission($item['permission']) || $user->superAdmin())
+                                    <li>
+                                        @if ((array_key_exists('text', $item) or array_key_exists('trans', $item)) and array_key_exists('link', $item))
+                                            <a href="{{ $item['link'] }}">
+                                                {{ array_key_exists('trans', $item) ? __($item['trans']) : $item['text'] }}
+                                            </a>
+                                        @elseif ((array_key_exists('text', $item) or array_key_exists('trans', $item)) and array_key_exists('route', $item))
+                                            <a href="{{ route($item['route']) }}">
+                                                {{ array_key_exists('trans', $item) ? __($item['trans']) : $item['text'] }}
+                                            </a>
+                                        @endif
+                                    </li>
                                 @endif
-                            </li>
+                            @else
+                                <li>
+                                    @if ((array_key_exists('text', $item) or array_key_exists('trans', $item)) and array_key_exists('link', $item))
+                                        <a href="{{ $item['link'] }}">
+                                            {{ array_key_exists('trans', $item) ? __($item['trans']) : $item['text'] }}
+                                        </a>
+                                    @elseif ((array_key_exists('text', $item) or array_key_exists('trans', $item)) and array_key_exists('route', $item))
+                                        <a href="{{ route($item['route']) }}">
+                                            {{ array_key_exists('trans', $item) ? __($item['trans']) : $item['text'] }}
+                                        </a>
+                                    @endif
+                                </li>
+                            @endif
                         @endforeach
                     @endif
                 @endforeach
@@ -132,17 +149,33 @@ $packages = \Laralum\Laralum\Packages::all();
                         </li>
                         @foreach ($custom_menu['items'] as $custom_item)
                             @if (array_key_exists('text', $custom_item) or array_key_exists('trans', $custom_item))
-                                <li>
-                                    @if (array_key_exists('link', $custom_item))
-                                        <a href="{{ url($custom_item['link']) }}">
-                                            {{ array_key_exists('trans', $custom_item) ? __($custom_item['trans']) : $custom_item['text'] }}
-                                        </a>
-                                    @elseif (array_key_exists('route', $custom_item))
-                                        <a href="{{ route($custom_item['route']) }}">
-                                            {{ array_key_exists('trans', $custom_item) ? __($custom_item['trans']) : $custom_item['text'] }}
-                                        </a>
+                                @if (array_key_exists('permission', $custom_item))
+                                    @if ($user->hasPermission($custom_item['permission']) || $user->superAdmin())
+                                        <li>
+                                            @if ((array_key_exists('text', $custom_item) or array_key_exists('trans', $custom_item)) and array_key_exists('link', $custom_item))
+                                                <a href="{{ $custom_item['link'] }}">
+                                                    {{ array_key_exists('trans', $custom_item) ? __($custom_item['trans']) : $custom_item['text'] }}
+                                                </a>
+                                            @elseif ((array_key_exists('text', $custom_item) or array_key_exists('trans', $custom_item)) and array_key_exists('route', $custom_item))
+                                                <a href="{{ route($custom_item['route']) }}">
+                                                    {{ array_key_exists('trans', $custom_item) ? __($custom_item['trans']) : $custom_item['text'] }}
+                                                </a>
+                                            @endif
+                                        </li>
                                     @endif
-                                </li>
+                                @else
+                                    <li>
+                                        @if ((array_key_exists('text', $custom_item) or array_key_exists('trans', $custom_item)) and array_key_exists('link', $custom_item))
+                                            <a href="{{ $custom_item['link'] }}">
+                                                {{ array_key_exists('trans', $custom_item) ? __($custom_item['trans']) : $custom_item['text'] }}
+                                            </a>
+                                        @elseif ((array_key_exists('text', $custom_item) or array_key_exists('trans', $custom_item)) and array_key_exists('route', $custom_item))
+                                            <a href="{{ route($custom_item['route']) }}">
+                                                {{ array_key_exists('trans', $custom_item) ? __($custom_item['trans']) : $custom_item['text'] }}
+                                            </a>
+                                        @endif
+                                    </li>
+                                @endif
                             @endif
                         @endforeach
                     @endforeach
