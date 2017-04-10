@@ -28,11 +28,12 @@ class LoginController extends Controller
      */
     public function login(Request $request)
     {
-        $email = $request->input('email');
-        $password = $request->input('password');
+        $this->validate($request, [
+            'email' => 'required|max:255',
+            'password' => 'required|max:255',
+        ]);
 
-        if (Auth::attempt(['email' => $email, 'password' => $password])) {
-            // Authentication passed...
+        if (Auth::attempt(['email' => $request->email, 'password' => $request->password], $request->remember ? true : false)) {
             return redirect()->intended(route('laralum::index'));
         }
 
