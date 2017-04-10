@@ -69,7 +69,8 @@ Sample:
         },
         {
             "trans": "laralum_permissions::general.create_permission",
-            "route": "laralum::permissions.create"
+            "route": "laralum::permissions.create",
+            "permission": "laralum_permissions::permissions.access"
         }
     ]
 }
