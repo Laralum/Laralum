@@ -15,12 +15,12 @@
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
         <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/uikit/3.0.0-beta.20/css/uikit.min.css" integrity="sha256-k8IzyP/qSivihqS5ogICYMqmuacc6Op6HQrFMGRrdfw=" crossorigin="anonymous" />
-        <link rel="stylesheet" href="https://cdn.rawgit.com/Laralum/Laralum/95d11fe4/src/Assets/css/style.css" />
+        <link rel="stylesheet" href="https://gitcdn.xyz/cdn/Laralum/Laralum/feecc1c067d7fb9dd7e16b8524b591eae28455a3/src/Assets/css/style.css" />
         <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.1.1/jquery.min.js" integrity="sha256-hVVnYaiADRTO2PzUGmuLJr8BLUSjGIZsDYGmIJLv2b8=" crossorigin="anonymous"></script>
         <script src="https://cdnjs.cloudflare.com/ajax/libs/uikit/3.0.0-beta.20/js/uikit.min.js" integrity="sha256-zg8+ewp+R2ncGBMQ3a+rhfLlef0gxfkG9zrBf+oSTQU=" crossorigin="anonymous"></script>
         <link rel="stylesheet" href="https://code.ionicframework.com/ionicons/2.0.1/css/ionicons.min.css">
         <script src="https://cdnjs.cloudflare.com/ajax/libs/uikit/3.0.0-beta.20/js/uikit-icons.min.js" integrity="sha256-iC7144xSYml8vsBsLNUxTvd3NAXNgnZrhv7ineC3t/o=" crossorigin="anonymous"></script>
-        <link rel="stylesheet" href="https://cdn.rawgit.com/Laralum/Laralum/95d11fe4/src/Assets/css/notyf.min.css" />
+        <link rel="stylesheet" href="https://gitcdn.xyz/cdn/Laralum/Laralum/feecc1c067d7fb9dd7e16b8524b591eae28455a3/src/Assets/css/notyf.min.css" />
 
         <!-- CSS Injection for packages -->
         @foreach ($packages as $package)
@@ -197,9 +197,9 @@
             </div>
         </div>
         <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery.transit/0.9.12/jquery.transit.min.js" integrity="sha256-rqEXy4JTnKZom8mLVQpvni3QHbynfjPmPxQVsPZgmJY=" crossorigin="anonymous"></script>
-        <script src="https://cdn.rawgit.com/Laralum/Laralum/95d11fe4/src/Assets/js/script.js"></script>
-        <script src="https://cdn.rawgit.com/Laralum/Laralum/95d11fe4/src/Assets/js/status.js"></script>
-        <script src="https://cdn.rawgit.com/Laralum/Laralum/95d11fe4/src/Assets/js/notyf.min.js"></script>
+        <script src="https://gitcdn.xyz/cdn/Laralum/Laralum/feecc1c067d7fb9dd7e16b8524b591eae28455a3/src/Assets/js/script.js"></script>
+        <script src="https://gitcdn.xyz/cdn/Laralum/Laralum/feecc1c067d7fb9dd7e16b8524b591eae28455a3/src/Assets/js/status.js"></script>
+        <script src="https://gitcdn.xyz/cdn/Laralum/Laralum/feecc1c067d7fb9dd7e16b8524b591eae28455a3/src/Assets/js/notyf.min.js"></script>
 
         @include('laralum::assets.js')
 
