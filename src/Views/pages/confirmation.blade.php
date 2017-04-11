@@ -20,7 +20,7 @@
                     <div class="uk-card-body">
 
                             <h4>@if(isset($message)) {{ $message }} @else @lang('laralum::general.confirmation_proceed') @endif</h4>
-                            <p>@lang('laralum::general.confirmation_info')</p>
+                            <p>@if(isset($description)) {{ $description }} @else @lang('laralum::general.confirmation_info') @endif</p>
                             <br>
                         <form class="uk-form-stacked"  @if(isset($action)) action="{{ $action }}" @endif method="POST">
                             {{ csrf_field() }}
