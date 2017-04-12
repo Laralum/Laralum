@@ -108,7 +108,17 @@
                 @foreach ($packages as $package)
                     @php $menu = Laralum\Laralum\Packages::menu($package); @endphp
                     @if ($menu and array_key_exists('items', $menu) )
-                        <li class="uk-nav-header">
+                        @php
+                            $generalPerm = false;
+                            foreach ($menu['items'] as $item) {
+                                if (! array_key_exists('permission', $item)) {
+                                    $generalPerm = true;
+                                } else {
+                                    (! $user->hasPermission($item['permission'])) ?: $generalPerm = true;
+                                }
+                            }
+                        @endphp
+                        <li class="uk-nav-header @unless($generalPerm) uk-hidden @endunless">
                             {{ ucfirst($package) }}
                         </li>
                         @foreach ($menu['items'] as $item)
