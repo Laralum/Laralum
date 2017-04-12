@@ -114,7 +114,7 @@
                                 if (! array_key_exists('permission', $item)) {
                                     $generalPerm = true;
                                 } else {
-                                    (! $user->hasPermission($item['permission'])) ?: $generalPerm = true;
+                                    (! ($user->hasPermission($item['permission']) || $user->superAdmin())) ?: $generalPerm = true;
                                 }
                             }
                         @endphp
