@@ -118,9 +118,11 @@
                                 }
                             }
                         @endphp
-                        <li class="uk-nav-header @unless($generalPerm) uk-hidden @endunless">
-                            {{ ucfirst($package) }}
-                        </li>
+                        @if($generalPerm)
+                            <li class="uk-nav-header">
+                                {{ ucfirst($package) }}
+                            </li>
+                        @endif
                         @foreach ($menu['items'] as $item)
                             @if (array_key_exists('permission', $item))
                                 @if ($user->hasPermission($item['permission']) || $user->superAdmin())
