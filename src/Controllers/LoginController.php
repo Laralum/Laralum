@@ -29,7 +29,7 @@ class LoginController extends Controller
     public function login(Request $request)
     {
         $this->validate($request, [
-            'email' => 'required|max:255',
+            'email'    => 'required|max:255',
             'password' => 'required|max:255',
         ]);
 
@@ -39,5 +39,4 @@ class LoginController extends Controller
 
         return redirect()->route('laralum::login')->with('error', trans('auth.failed'))->withInput();
     }
-
 }
