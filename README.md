@@ -1,17 +1,23 @@
-# Laralum
-The modular open source laravel administration panel
-
-<p align="center">
-    <a href="https://styleci.io/repos/69903606"><img src="https://styleci.io/repos/69903606/shield?branch=master" alt="StyleCI"></a>
-</p>
-
-
-
 **UNDER ACTIVE DEVELOPMENT**
 
 ## Please use version 2.*
 
 https://github.com/ConsoleTVs/Laralum
+
+<hr>
+<hr>
+
+<p align="center"><a href="https://laralum.com"><img height="250" src="https://avatars1.githubusercontent.com/u/22253051"></a></p>
+
+<h1 align="center">Laralum</h1>
+
+<p align="center">
+<a href="https://styleci.io/repos/69903606"><img src="https://styleci.io/repos/69903606/shield?style=flat&branch=master" alt="StyleCI"></a>
+<a href="https://github.com/laralum"><img src="https://img.shields.io/badge/Built%20For-Laralum-orange.svg" alt="Laralum"></a>
+<a href="https://github.com/laralum/Laralum"><img src="https://poser.pugx.org/laralum/laralum/d/total.svg" alt="Downloads"></a>
+<a href="https://github.com/Laralum/Laralum/releases"><img src="https://poser.pugx.org/laralum/laralum/v/stable.svg" alt="License"></a>
+<a href="https://raw.githubusercontent.com/Laralum/Laralum/master/LICENSE"><img src="https://poser.pugx.org/laralum/laralum/license.svg" alt="License"></a>
+</p>
 
 
 ## Getting started
@@ -115,3 +121,29 @@ The list of the currently supported injectors is:
         ]
     ]
     ```
+
+## License
+
+```
+MIT License
+
+Copyright (c) 2017 Laralum
+
+Permission is hereby granted, free of charge, to any person obtaining a copy
+of this software and associated documentation files (the "Software"), to deal
+in the Software without restriction, including without limitation the rights
+to use, copy, modify, merge, publish, distribute, sublicense, and/or sell
+copies of the Software, and to permit persons to whom the Software is
+furnished to do so, subject to the following conditions:
+
+The above copyright notice and this permission notice shall be included in all
+copies or substantial portions of the Software.
+
+THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
+IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
+FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
+AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
+LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
+OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
+SOFTWARE.
+```
