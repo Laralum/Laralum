@@ -9,9 +9,9 @@
         <title>@yield('title') - {{ $settings->appname }}</title>
 
         <meta charset="UTF-8">
-        <meta name="description" content="The modular laravel administration panel">
-        <meta name="keywords" content="Laralum,Admin,Panel,CMS,Laravel,Modern,Developers">
-        <meta name="author" content="Erik Campobadal, Aitor Riba">
+        <meta name="description" content="{{ $settings->description }}">
+        <meta name="keywords" content="{{ $settings->keywords }}">
+        <meta name="author" content="{{ $settings->author }}">
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
         <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/uikit/3.0.0-beta.20/css/uikit.min.css" integrity="sha256-k8IzyP/qSivihqS5ogICYMqmuacc6Op6HQrFMGRrdfw=" crossorigin="anonymous" />
