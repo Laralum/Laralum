@@ -82,7 +82,8 @@ class Packages extends Facade
 
         foreach ($files as $file) {
             if ($file == 'Menu.json') {
-                $file_r = file_get_contents($dir . '/' . $file);
+                $file_r = file_get_contents($dir.'/'.$file);
+
                 return json_decode($file_r, true);
             }
         }
@@ -99,10 +100,11 @@ class Packages extends Facade
     {
         $dir = __DIR__.'/../../'.$package.'/src';
         $files = is_dir($dir) ? scandir($dir) : [];
-        
+
         foreach ($files as $file) {
             if ($file == 'Submenu.json') {
-                $file_r = file_get_contents($dir . '/' . $file);
+                $file_r = file_get_contents($dir.'/'.$file);
+
                 return json_decode($file_r, true);
             }
         }

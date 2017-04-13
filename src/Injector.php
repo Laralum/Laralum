@@ -21,10 +21,10 @@ use Illuminate\Support\Facades\Facade;
 class Injector extends Facade
 {
     /**
-     * Returns the injection of the specified injector and package.
-     *
-     * @param string $package
-     */
+      * Returns the injection of the specified injector and package.
+      *
+      * @param string $package
+      */
      public static function inject($injector, $package)
      {
          $dir = __DIR__."/../../$package/src/Injectors";
@@ -32,11 +32,12 @@ class Injector extends Facade
 
          foreach ($files as $file) {
              if (substr($file, 0, -4) == $injector and substr($file, -4) == '.php') {
-                 $file = $dir . '/' . $file;
+                 $file = $dir.'/'.$file;
+
                  return include $file;
              }
          }
 
-         return "";
+         return '';
      }
 }

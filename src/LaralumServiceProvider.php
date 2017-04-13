@@ -16,7 +16,7 @@ class LaralumServiceProvider extends ServiceProvider
         [
             'name' => 'Laralum Access',
             'slug' => 'laralum::access',
-            'desc' => "Grants access to all laralum infrastructure",
+            'desc' => 'Grants access to all laralum infrastructure',
         ],
     ];
 
