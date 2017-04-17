@@ -1,13 +1,4 @@
-**UNDER ACTIVE DEVELOPMENT**
-
-## Please use version 2.*
-
-https://github.com/ConsoleTVs/Laralum
-
-<hr>
-<hr>
-
-<p align="center"><a href="https://laralum.com"><img height="250" src="https://avatars1.githubusercontent.com/u/22253051"></a></p>
+<p align="center"><a href="https://laralum.com"><img height="300" src="https://avatars1.githubusercontent.com/u/22253051"></a></p>
 
 <h1 align="center">Laralum</h1>
 
@@ -22,8 +13,6 @@ https://github.com/ConsoleTVs/Laralum
 
 ## Getting started
 
-*For beta testers*
-
 Before starts with installation you should have done `auth`
 
 ```
@@ -35,7 +24,7 @@ php artisan make:auth
 Require laralum/laralum with composer
 
 ```
-composer require laralum/laralum dev-master
+composer require laralum/laralum
 ```
 
 ### Register service provider
