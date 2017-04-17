@@ -40,12 +40,28 @@
                 <nav class="uk-navbar-container" uk-navbar>
                     <div class="uk-navbar-left">
                         <a id="sidebar_toggle" class="uk-navbar-toggle" uk-navbar-toggle-icon href="#"></a>
-                        <a href="{{ route('laralum::index') }}" class="uk-navbar-item uk-logo">
-                            {{ $settings->appname }}
-                        </a>
+                        <a href="{{ route('laralum::index') }}" class="uk-navbar-item uk-logo">{{ $settings->appname }}</a>
                     </div>
                     <div class="uk-navbar-right uk-light">
                         <ul class="uk-navbar-nav">
+                            <li class="uk-active">
+                                <a id="navbar_lang" href="#"><span style="font-size:25px" class="ion-earth"></span></a>
+                                <div sty uk-dropdown="pos: bottom-center; mode: click; offset: -17;">
+                                    <ul class="uk-nav uk-navbar-dropdown-nav">
+                                        <!-- User Injector -->
+                                        <li class="uk-nav-header">Select Language</li>
+                                        @foreach (config('laralum.languages') as $lang)
+                                            @if (in_array($lang, config('localizer.allowed_langs')) && $lang != \Aitor24\Localizer\Facades\LocalizerFacade::getCurrentCode())
+                                                <li>
+                                                    <a href="{{ route("localizer::setLocale", ['lang' => $lang]) }}">
+                                                        {{ \Aitor24\Localizer\Facades\LocalizerFacade::getLanguage($lang) }}
+                                                    </a>
+                                                </li>
+                                            @endif
+                                        @endforeach
+                                    </ul>
+                                </div>
+                            </li>
                             <li class="uk-active">
                                 <a id="navbar_name" href="#">{{ Auth::user()->name }} &nbsp;<span class="ion-ios-arrow-down"></span></a>
                                 <div uk-dropdown="pos: bottom-right; mode: click; offset: -17;">

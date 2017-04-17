@@ -5,6 +5,7 @@ namespace Laralum\Laralum\Middleware;
 use Closure;
 use Laralum\Laralum\Injector;
 use Laralum\Laralum\Packages;
+use Aitor24\Localizer\Middlewares\LocalizerMiddleware as Localizer;
 
 class LaralumBase
 {
@@ -23,6 +24,10 @@ class LaralumBase
         foreach (Packages::all() as $package) {
             Injector::inject('laralum.base', $package);
         }
+
+        // Setting locale
+        $localizer = new Localizer();
+        $localizer->handle($request, $next);
 
         return $next($request);
     }
