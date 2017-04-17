@@ -2,10 +2,10 @@
 
 namespace Laralum\Laralum\Middleware;
 
+use Aitor24\Localizer\Middlewares\LocalizerMiddleware as Localizer;
 use Closure;
 use Laralum\Laralum\Injector;
 use Laralum\Laralum\Packages;
-use Aitor24\Localizer\Middlewares\LocalizerMiddleware as Localizer;
 
 class LaralumBase
 {
