@@ -9,8 +9,13 @@
         "consoletvs/charts": "4.*",
         "consoletvs/identify": "1.*",
         "aitor24/localizer": "1.3.*",
-        "laralum/dashboard": "dev-master",
-        "laralum/settings": "dev-master"
+        "laralum/dashboard": "1.*",
+        "laralum/settings": "1.*",
+        "laralum/permissions": "1.*",
+        "laralum/roles": "1.*",
+        "laralum/users": "1.*",
+        "laralum/profile": "1.*",
+        "laralum/notifications": "1.*"
     },
     "license": "MIT",
     "authors": [
