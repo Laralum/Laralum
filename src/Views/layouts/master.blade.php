@@ -237,5 +237,22 @@
         @foreach ($packages as $package)
             {!! \Laralum\Laralum\Injector::inject('script', $package) !!}
         @endforeach
+
+        <script>
+            $(function() {
+                function resize_navbar()
+                {
+                    if ($( window ).width() < 960) {
+                        $('#navbar_name').html("<span style='font-size:25px' class='ion-person'></span>");
+                    } else {
+                        $('#navbar_name').html("{{ Auth::user()->name }}");
+                    }
+                }
+                resize_navbar();
+                $( window ).resize(function() {
+            		resize_navbar();
+            	});
+            })
+        </script>
     </body>
 </html>
