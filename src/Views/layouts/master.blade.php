@@ -109,7 +109,7 @@
                 </nav>
             </div>
         </div>
-        <div id="sidebar" class="tm-sidebar-left uk-background">
+        <div id="sidebar" class="tm-sidebar-left uk-background-default">
             <center>
                 <div class="user">
                     <img id="avatar" style="max-width:100px;max-height:100px;" class="uk-border-circle" src="{{ Laralum\Users\Models\User::findOrFail(Auth::id())->avatar() }}" />
