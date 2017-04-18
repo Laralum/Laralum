@@ -45,4 +45,9 @@ return [
     'confirmation_proceed'  => '¿Estas seguro que deseas continuar?',
     'confirmation_info'     => 'Esta acción no se puede deshacer.',
     'home'                  => 'Inicio',
+
+    'login_page'            => 'Página de inicio de sesión',
+    'forgot_password'       => '¿Olvidaste tu contraseña?',
+    'login'                 => 'Iniciar sesión',
+    'remember_me'           => 'Recuérdame',
 ];

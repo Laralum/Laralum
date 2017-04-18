@@ -48,4 +48,8 @@ return [
     'logout'                => 'Logout',
     'actions'               => 'Actions',
 
+    'login_page'            => 'Login Page',
+    'forgot_password'       => 'Forgot your password?',
+    'login'                 => 'Login',
+    'remember_me'           => 'Remember Me',
 ];

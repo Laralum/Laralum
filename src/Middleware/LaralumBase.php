@@ -27,7 +27,7 @@ class LaralumBase
 
         // Setting locale
         $localizer = new Localizer();
-        $localizer->setLang();
+        $localizer->setLang($request);
 
         return $next($request);
     }

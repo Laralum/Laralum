@@ -45,4 +45,9 @@ return [
     'confirmation_proceed'  => 'Bist du sicher, dass du fortfahren willst?',
     'confirmation_info'     => 'Diese Aktion kann nicht rückgängig gemacht werden.',
     'home'                  => 'Zuhause',
+
+    'login_page'            => 'Loginseite',
+    'forgot_password'       => 'Haben Sie Ihr Passwort vergessen?',
+    'login'                 => 'Anmeldung',
+    'remember_me'           => 'Erinnere dich an mich',
 ];

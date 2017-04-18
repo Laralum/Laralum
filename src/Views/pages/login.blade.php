@@ -5,7 +5,7 @@
 <!DOCTYPE html>
 <html>
     <head>
-        <title>Login - {{ $settings->appname }}</title>
+        <title>@lang('laralum::general.login') - {{ $settings->appname }}</title>
 
         <meta charset="UTF-8">
         <meta name="description" content="Clean and responsive administration panel">
@@ -46,7 +46,7 @@
                         <div class="uk-width-1-1@s uk-width-3-5@l uk-width-1-3@xl">
                             <div class="uk-card uk-card-default">
                                 <div class="uk-card-header">
-                                    Login Page
+                                    @lang("laralum::general.login_page")
                                 </div>
                                 <div class="uk-card-body">
                                     <center>
@@ -59,30 +59,30 @@
                                             <div class="uk-margin">
                                                 <div class="uk-position-relative">
                                                     <span class="uk-form-icon ion-android-person"></span>
-                                                    <input value="{{ old('email') }}" name="email" class="uk-input" type="text" placeholder="Email">
+                                                    <input value="{{ old('email') }}" name="email" class="uk-input" type="text" placeholder="{{ __("laralum::general.email") }}">
                                                 </div>
                                             </div>
 
                                             <div class="uk-margin">
                                                 <div class="uk-position-relative">
                                                     <span class="uk-form-icon ion-locked"></span>
-                                                    <input name="password" class="uk-input" type="password" placeholder="Password">
+                                                    <input name="password" class="uk-input" type="password" placeholder="{{ __("laralum::general.password") }}">
                                                 </div>
                                             </div>
 
                                             <div class="uk-margin">
                                                 <div class="uk-position-relative">
-                                                    <label><input name="remember" {{ !old('remember') ?: 'checked' }} class="uk-checkbox" type="checkbox"> Remember Me</label><br />
+                                                    <label><input name="remember" {{ !old('remember') ?: 'checked' }} class="uk-checkbox" type="checkbox">@lang('laralum::general.remember_me')</label><br />
                                                 </div>
                                             </div>
 
                                             <div class="uk-margin">
-                                                <a href="#">Forgot your password?</a>
+                                                <a href="#">@lang("laralum::general.forgot_password")</a>
                                             </div>
 
                                             <div class="uk-margin">
                                                 <button type="submit" class="uk-button uk-button-primary">
-                                                    <span class="ion-forward"></span>&nbsp; Login
+                                                    <span class="ion-forward"></span>&nbsp; @lang('laralum::general.login')
                                                 </button>
                                             </div>
                                         </fieldset>

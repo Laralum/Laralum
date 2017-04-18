@@ -45,4 +45,9 @@ return [
     'confirmation_proceed'  => 'Sei sicuro di voler procedere?',
     'confirmation_info'     => 'Questa azione non può essere annullata.',
     'home'                  => 'Casa',
+
+    'login_page'            => 'Pagina di login',
+    'forgot_password'       => 'Hai dimenticato la password?',
+    'login'                 => 'Accesso',
+    'remember_me'           => 'Ricordati di me',
 ];

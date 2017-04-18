@@ -45,4 +45,9 @@ return [
     'confirmation_proceed'  => 'Esteu segur que voleu continuar?',
     'confirmation_info'     => 'Aquesta acció no es pot desfer.',
     'home'                  => 'Inici',
+
+    'login_page'            => "Pàgina d'inici de sessió",
+    'forgot_password'       => 'Has oblidat la teva contrasenya?',
+    'login'                 => 'Iniciar Sessió',
+    'remember_me'           => "Recorda'm",
 ];
