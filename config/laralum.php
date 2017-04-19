@@ -15,7 +15,18 @@ return [
 
     /*
     |--------------------------------------------------------------------------
-    | Laralum languages
+    | Users settings
+    |--------------------------------------------------------------------------
+    |
+    | This are the base settings for users, make sure it's all correct.
+    */
+    'superadmins' => [
+        'example@email.com',
+    ],
+
+    /*
+    |--------------------------------------------------------------------------
+    | Languages settings
     |--------------------------------------------------------------------------
     |
     | This are the current languages supported on laralum.
