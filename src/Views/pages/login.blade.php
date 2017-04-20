@@ -72,12 +72,12 @@
 
                                             <div class="uk-margin">
                                                 <div class="uk-position-relative">
-                                                    <label><input name="remember" {{ !old('remember') ?: 'checked' }} class="uk-checkbox" type="checkbox">@lang('laralum::general.remember_me')</label><br />
+                                                    <label><input name="remember" {{ !old('remember') ?: 'checked' }} class="uk-checkbox" type="checkbox"> @lang('laralum::general.remember_me')</label><br />
                                                 </div>
                                             </div>
 
                                             <div class="uk-margin">
-                                                <a href="#">@lang("laralum::general.forgot_password")</a>
+                                                <a href="{{ route('password.request') }}">@lang("laralum::general.forgot_password")</a>
                                             </div>
 
                                             <div class="uk-margin">
