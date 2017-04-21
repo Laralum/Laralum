@@ -4,6 +4,7 @@
 
 <p align="center">
 <a href="https://styleci.io/repos/69903606"><img src="https://styleci.io/repos/69903606/shield?style=flat&branch=master" alt="StyleCI"></a>
+<a href="https://www.codacy.com/app/Laralum/Laralum?utm_source=github.com&amp;utm_medium=referral&amp;utm_content=Laralum/Laralum&amp;utm_campaign=Badge_Grade"><img src="https://api.codacy.com/project/badge/Grade/bdcb5afce6d44eafb80a9c99135db475"/></a>
 <a href="https://github.com/laralum/Laralum"><img src="https://poser.pugx.org/laralum/laralum/d/total.svg" alt="Downloads"></a>
 <a href="https://github.com/Laralum/Laralum/releases"><img src="https://poser.pugx.org/laralum/laralum/v/stable.svg" alt="Release"></a>
 <a href="https://raw.githubusercontent.com/Laralum/Laralum/master/LICENSE"><img src="https://poser.pugx.org/laralum/laralum/license.svg" alt="License"></a>
