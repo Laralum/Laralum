@@ -1,12 +1,11 @@
-<p align="center"><a href="https://laralum.com"><img height="300" src="https://avatars1.githubusercontent.com/u/22253051"></a></p>
+<p align="center"><a href="https://laralum.com"><img height="280" src="https://avatars1.githubusercontent.com/u/22253051"></a></p>
 
 <h1 align="center">Laralum</h1>
 
 <p align="center">
 <a href="https://styleci.io/repos/69903606"><img src="https://styleci.io/repos/69903606/shield?style=flat&branch=master" alt="StyleCI"></a>
-<a href="https://github.com/laralum"><img src="https://img.shields.io/badge/Built%20For-Laralum-orange.svg" alt="Laralum"></a>
 <a href="https://github.com/laralum/Laralum"><img src="https://poser.pugx.org/laralum/laralum/d/total.svg" alt="Downloads"></a>
-<a href="https://github.com/Laralum/Laralum/releases"><img src="https://poser.pugx.org/laralum/laralum/v/stable.svg" alt="License"></a>
+<a href="https://github.com/Laralum/Laralum/releases"><img src="https://poser.pugx.org/laralum/laralum/v/stable.svg" alt="Release"></a>
 <a href="https://raw.githubusercontent.com/Laralum/Laralum/master/LICENSE"><img src="https://poser.pugx.org/laralum/laralum/license.svg" alt="License"></a>
 </p>
 
