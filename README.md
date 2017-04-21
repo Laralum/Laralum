@@ -18,7 +18,7 @@ Laralum is an idea that came to our mind when we found no CMS that had the right
 ## Documentation
 
 <p align="center">
-<a href="https://laralum.com/docs/https://laralum.com/docs/Introduction/Getting_started"><img height="120" src="http://i.imgur.com/47WnADd.png"></a>
+<a href="https://laralum.com/docs"><img height="120" src="http://i.imgur.com/47WnADd.png"></a>
 </p>
 
 ## License
