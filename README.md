@@ -11,105 +11,15 @@
 </p>
 
 
-## Getting started
+## What is Laralum?
 
-Before starts with installation you should have done `auth`
+Laralum is an idea that came to our mind when we found no CMS that had the right balance between power and flexibility. This can sometimes be tricky, the whole point of Laralum is to provide a content manager that's ready for developers to use and customize.
 
-```
-php artisan make:auth
-```
+## Documentation
 
-### Installation
-
-Require laralum/laralum with composer
-
-```
-composer require laralum/laralum
-```
-
-### Register service provider
-
-Include the line below to config/app.php inside providers array :
-
-```php
-Laralum\Laralum\LaralumServiceProvider::class,
-```
-
-### Migrate
-
-Migrate database tables
-
-```
-php artisan:migrate
-```
-
-### Packages
-
-Laralum requires basic packages such permissions, roles, users... but there are also optional packages such advertisements, tickets...
-
-To install an optional package, you should follow the documentation of each package on the specified README
-
-## Package Menu
-
-The package menus can be defined creating a ```Menu.json``` file in the /src/ of your package.
-
-Sample:
-
-```json
-{
-    "items": [
-        {
-            "text": "Permission List",
-            "url": "https://google.com"
-        },
-        {
-            "trans": "laralum_permissions::general.create_permission",
-            "route": "laralum::permissions.create",
-            "permission": "laralum_permissions::permissions.access"
-        }
-    ]
-}
-
-```
-
-## Injections
-
-To inject code into diferent parts of laralum as a module, you'll need to create a folder in your package:
-
-```
-src/Injectors/
-```
-
-Inside this folder you'll need to place all the injections you want to make inside.
-
-The list of the currently supported injectors is:
-
--   **style (style.php)**
-    This will inject the php code inside style.php under the specified directory inside the header of
-    the master template inside the administration panel.
-
--   **script (script.php)**
-    This will inject the php code inside script.php under the specified directory before the end of the ```<body>``` tag in the master template inside the administration panel.
-
--   **laralum.base (laralum.base.php)**
-    This will inject the php code inside laralum.base.php inside the laralum.base middleware used across
-    all the administration panel.
-
--   **laralum.auth (laralum.auth.php)**
-    This will inject the php code inside laralum.auth.php inside the laralum.auth middleware used across
-    all the administration panel.
-
--   **user (user.php)**
-    This will inject the php *array* that is returned in user.php inside the user menu on the admin panel.
-
-    ```php
-    return  [
-        [
-            'text'  => 'item Text',
-            'url'   => 'https://google.com'
-        ]
-    ]
-    ```
+<p align="center">
+<a href="https://laralum.com/docs/https://laralum.com/docs/Introduction/Getting_started"><img height="120" src="http://i.imgur.com/47WnADd.png"></a>
+</p>
 
 ## License
 
