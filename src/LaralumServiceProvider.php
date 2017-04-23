@@ -55,7 +55,11 @@ class LaralumServiceProvider extends ServiceProvider
         foreach (Packages::all() as $package) {
             $provider = Packages::provider($package);
             if ($provider) {
-                $this->app->register('Laralum\\'.ucfirst($package)."\\$provider");
+                if (class_exists('Laralum\\'.ucfirst($package)."\\$provider")) {
+                    $this->app->register('Laralum\\'.ucfirst($package)."\\$provider");
+                } elseif (class_exists('Laralum\\'.strtoupper($package)."\\$provider")) {
+                    $this->app->register('Laralum\\'.strtoupper($package)."\\$provider");
+                }
             }
         }
     }
