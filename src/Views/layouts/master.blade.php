@@ -76,7 +76,7 @@
                                                         $counter = $counter + (isset($item['counter']) ? $item['counter'] : 0);
                                                     }
                                                 @endphp
-                                                <li class="uk-nav-header">{{ $package }} @if($counter) <span class="uk-badge">{{$counter}}</span> @endif
+                                                <li class="uk-nav-header">{{ $package }} @if($counter) <span class="uk-badge">{{ $counter }}</span> @endif
                                                 </li>
                                                 @foreach ($items as $item)
                                                     <li>
@@ -85,7 +85,7 @@
                                                             @php
                                                                 $show = isset($item['counter']) ? $item['counter'] : false;
                                                             @endphp
-                                                            @if ($show) <span class="uk-badge">{{$show}}</span> @endif
+                                                            @if ($show) <span class="uk-badge">{{ $show }}</span> @endif
                                                         </a>
 
                                                     </li>
@@ -112,7 +112,7 @@
         <div id="sidebar" class="tm-sidebar-left uk-background-default">
             <center>
                 <div class="user">
-                    <img id="avatar" style="max-width:100px;max-height:100px;" class="uk-border-circle" src="{{ Laralum\Users\Models\User::findOrFail(Auth::id())->avatar() }}" />
+                    <img id="avatar" style="max-width:100px;max-height:100px;" class="uk-border-circle" src="{{ $user->avatar() }}" />
                     <div class="uk-margin-top"></div>
                     <div id="name" class="uk-text-truncate">{{ Auth::user()->name }}</div>
                     <div id="email" class="uk-text-truncate">{{ Auth::user()->email }}</div>
