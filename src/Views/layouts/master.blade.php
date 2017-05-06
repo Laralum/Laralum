@@ -50,12 +50,10 @@
                                     <ul class="uk-nav uk-navbar-dropdown-nav">
                                         <!-- User Injector -->
                                         <li class="uk-nav-header">Select Language</li>
-                                        @foreach (config('laralum.languages') as $lang)
-                                            @if (in_array($lang, config('localizer.allowed_langs')) && $lang != \Aitor24\Localizer\Facades\LocalizerFacade::getCurrentCode())
+                                        @foreach (\Aitor24\Localizer\Facades\LocalizerFacade::addNames(config('laralum.languages')) as $code => $name)
+                                            @if (\Aitor24\Localizer\Facades\LocalizerFacade::isAllowedLanguage($code) && $code != \Illuminate\Support\Facades\App::getLocale())
                                                 <li>
-                                                    <a href="{{ route("localizer::setLocale", ['lang' => $lang]) }}">
-                                                        {{ \Aitor24\Localizer\Facades\LocalizerFacade::getLanguage($lang) }}
-                                                    </a>
+                                                    <a href="{{ route("localizer::setLocale", ['locale' => $code]) }}">{{ $name }}</a>
                                                 </li>
                                             @endif
                                         @endforeach
