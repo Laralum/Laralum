@@ -26,7 +26,7 @@
                             {{ csrf_field() }}
                             @if(isset($method)) {{ method_field($method) }} @endif
                                 <div class="uk-margin">
-                                    <a href="{{ URL::previous() }}" class="uk-button uk-button-default uk-align-left">@lang('laralum::general.take_me_back')</a>
+                                    <a href="{{ URL::previous() }}" class="uk-button uk-button-default">@lang('laralum::general.take_me_back')</a>
                                     <button type="submit" class="uk-button uk-button-primary uk-align-right">
                                         <span class="ion-forward"></span>&nbsp; @if(isset($button)) {{ $button }} @else @lang('laralum::general.proceed') @endif
                                     </button>
