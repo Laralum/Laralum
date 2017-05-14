@@ -4,7 +4,6 @@ namespace Laralum\Laralum\Commands;
 
 use Illuminate\Console\Command;
 use Laralum\Laralum\Packages;
-use Artisan;
 
 class LaralumPublish extends Command
 {
@@ -47,12 +46,12 @@ class LaralumPublish extends Command
 
         $this->call('laralum:packages');
 
-        $this->line(" ");
-        $this->comment('- Found ' . count($packages) . ' packages installed');
+        $this->line(' ');
+        $this->comment('- Found '.count($packages).' packages installed');
 
         if ($this->confirm('Do you wish to continue?')) {
             $this->info('Publishing packages...');
-            $this->line(" ");
+            $this->line(' ');
 
             $bar = $this->output->createProgressBar(count($packages));
 
@@ -67,15 +66,15 @@ class LaralumPublish extends Command
 
                     if ($pr) {
                         $this->callSilent('vendor:publish', [
-                            '--provider' => $pr
+                            '--provider' => $pr,
                         ]);
                     }
                 }
                 $bar->advance();
             }
             $bar->finish();
-            $this->line(" ");
-            $this->line(" ");
+            $this->line(' ');
+            $this->line(' ');
             $this->info('All the packages were published!');
         } else {
             $this->error('Publishing stopped');
