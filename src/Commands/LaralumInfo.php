@@ -37,23 +37,23 @@ class LaralumInfo extends Command
      */
     public function handle()
     {
-        $this->comment("                                   ");
-        $this->comment("    ...........................    ");
-        $this->comment("   .yyyyyyyyyyyyyyyyyyyyyyyyyyy.   ");
-        $this->comment("   .yyyyyyyyysssyyyyyyyyyyyyyyy.   ");
-        $this->comment("   .yyyyyyyy/...oyyyyyyyyyyyyyy.     _                     _                 ");
-        $this->comment("   .yyyyyyyy:   oyyyyyyyyyyyyyy.    | |                   | |                ");
-        $this->comment("   .yyyyyyyy:   oyyyyyyyyyyyyyy.    | |     __ _ _ __ __ _| |_   _ _ __ ___  ");
+        $this->comment('                                   ');
+        $this->comment('    ...........................    ');
+        $this->comment('   .yyyyyyyyyyyyyyyyyyyyyyyyyyy.   ');
+        $this->comment('   .yyyyyyyyysssyyyyyyyyyyyyyyy.   ');
+        $this->comment('   .yyyyyyyy/...oyyyyyyyyyyyyyy.     _                     _                 ');
+        $this->comment('   .yyyyyyyy:   oyyyyyyyyyyyyyy.    | |                   | |                ');
+        $this->comment('   .yyyyyyyy:   oyyyyyyyyyyyyyy.    | |     __ _ _ __ __ _| |_   _ _ __ ___  ');
         $this->comment("   .yyyyyyyy:   oyyyyyyyyyyyyyy.    | |    / _` | '__/ _` | | | | | '_ ` _ \ ");
-        $this->comment("   .yyyyyyyy:   oyyyyyyyyyyyyyy.    | |___| (_| | | | (_| | | |_| | | | | | |");
+        $this->comment('   .yyyyyyyy:   oyyyyyyyyyyyyyy.    | |___| (_| | | | (_| | | |_| | | | | | |');
         $this->comment("   .yyyyyyyy:   oyyyyyyyyyyyyyy.    |______\__,_|_|  \__,_|_|\__,_|_| |_| |_|");
-        $this->comment("   .yyyyyyyy:   -:::::::syyyyyy.                                             ");
-        $this->comment("   .yyyyyyyy+`          syyyyyy.    Laralum Administration Panel - laralum.com");
-        $this->comment("   .yyyyyyyyys++++++++++yyyyyyy.   ");
-        $this->comment("   .yyyyyyyyyyyyyyyyyyyyyyyyyyy.   ");
-        $this->comment("   .yyyyyyyyyyyyyyyyyyyyyyyyyyy.   ");
-        $this->comment("    ...........................    ");
-        $this->comment("                                   ");
-        $this->line(" ");
+        $this->comment('   .yyyyyyyy:   -:::::::syyyyyy.                                             ');
+        $this->comment('   .yyyyyyyy+`          syyyyyy.    Laralum Administration Panel - laralum.com');
+        $this->comment('   .yyyyyyyyys++++++++++yyyyyyy.   ');
+        $this->comment('   .yyyyyyyyyyyyyyyyyyyyyyyyyyy.   ');
+        $this->comment('   .yyyyyyyyyyyyyyyyyyyyyyyyyyy.   ');
+        $this->comment('    ...........................    ');
+        $this->comment('                                   ');
+        $this->line(' ');
     }
 }

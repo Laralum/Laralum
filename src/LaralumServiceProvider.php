@@ -3,10 +3,10 @@
 namespace Laralum\Laralum;
 
 use Illuminate\Support\ServiceProvider;
-use Laralum\Permissions\PermissionsChecker;
 use Laralum\Laralum\Commands\LaralumInfo;
-use Laralum\Laralum\Commands\LaralumPublish;
 use Laralum\Laralum\Commands\LaralumPackages;
+use Laralum\Laralum\Commands\LaralumPublish;
+use Laralum\Permissions\PermissionsChecker;
 
 class LaralumServiceProvider extends ServiceProvider
 {

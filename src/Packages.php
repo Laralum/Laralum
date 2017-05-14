@@ -100,7 +100,7 @@ class Packages extends Facade
     {
         $preference = collect(['laralum', 'dashboard', 'users', 'roles', 'permissions']);
 
-        collect(static::get())->each(function ($package) use ($preference){
+        collect(static::get())->each(function ($package) use ($preference) {
             if (!$preference->contains($package)) {
                 $preference->push($package);
             }

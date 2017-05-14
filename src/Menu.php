@@ -11,8 +11,8 @@
 
 namespace Laralum\Laralum;
 
-use Laralum\Users\Models\User;
 use Auth;
+use Laralum\Users\Models\User;
 
 /**
  * This is the menu facade class.
@@ -27,7 +27,7 @@ class Menu
     /**
      * Set the name of the menu.
      *
-     * @param  string $name
+     * @param string $name
      *
      * @return Menu
      */
@@ -41,7 +41,7 @@ class Menu
     /**
      * Adds the item to the menu.
      *
-     * @param  Item $item
+     * @param Item $item
      *
      * @return Menu
      */
@@ -60,16 +60,16 @@ class Menu
     public static function generate()
     {
         $user = User::findOrFail(Auth::id());
-        $m = new Menu;
+        $m = new self();
 
         foreach (Packages::all() as $package) {
-            $pm = new Menu;
+            $pm = new self();
             $pm->name(ucfirst($package));
             $pma = Packages::menu($package);
 
             if (array_key_exists('items', $pma)) {
                 foreach ($pma['items'] as $i) {
-                    $item = new Item;
+                    $item = new Item();
                     $item->text = array_key_exists('trans', $i) ? __($i['trans']) : $i['text'];
                     $item->url = array_key_exists('route', $i) ? route($i['route']) : url($i['link']);
 
@@ -89,15 +89,13 @@ class Menu
         }
 
         if (array_key_exists('menu', config('laralum'))) {
-
             foreach (config('laralum.menu') as $custom_menu) {
-
-                $pm = new Menu;
+                $pm = new self();
                 $pm->name(ucfirst($custom_menu['title']));
                 $pma = config('laralum.menu');
 
                 foreach ($custom_menu['items'] as $i) {
-                    $item = new Item;
+                    $item = new Item();
                     $item->text = array_key_exists('trans', $i) ? __($i['trans']) : $i['text'];
                     $item->url = array_key_exists('route', $i) ? route($i['route']) : url($i['link']);
 

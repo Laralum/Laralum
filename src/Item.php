@@ -24,7 +24,7 @@ class Item
     /**
      * Set the item URL.
      *
-     * @param  string $url
+     * @param string $url
      *
      * @return Item
      */
@@ -38,7 +38,7 @@ class Item
     /**
      * Set the item text.
      *
-     * @param  string $text
+     * @param string $text
      *
      * @return Item
      */
@@ -48,5 +48,4 @@ class Item
 
         return $this;
     }
-
 }
