@@ -13,11 +13,12 @@
         <meta name="keywords" content="{{ $settings->keywords }}">
         <meta name="author" content="{{ $settings->author }}">
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <meta name="csrf-token" content="{{ csrf_token() }}">
 
-        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/uikit/3.0.0-beta.20/css/uikit.min.css" integrity="sha256-k8IzyP/qSivihqS5ogICYMqmuacc6Op6HQrFMGRrdfw=" crossorigin="anonymous" />
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/uikit/3.0.0-beta.22/css/uikit.min.css" integrity="sha256-WZX0w7unmRflHho/IHuJeySg9Dg0rySaHKxejAVFgA8=" crossorigin="anonymous" />
         <link rel="stylesheet" href="https://gitcdn.xyz/cdn/Laralum/Laralum/feecc1c067d7fb9dd7e16b8524b591eae28455a3/src/Assets/css/style.css" />
         <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.1.1/jquery.min.js" integrity="sha256-hVVnYaiADRTO2PzUGmuLJr8BLUSjGIZsDYGmIJLv2b8=" crossorigin="anonymous"></script>
-        <script src="https://cdnjs.cloudflare.com/ajax/libs/uikit/3.0.0-beta.20/js/uikit.min.js" integrity="sha256-zg8+ewp+R2ncGBMQ3a+rhfLlef0gxfkG9zrBf+oSTQU=" crossorigin="anonymous"></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/uikit/3.0.0-beta.22/js/uikit.min.js" integrity="sha256-ZfxNpEyIHFt0qMdwt/+cIhDnyZCykGkVd1uNz6TU/jY=" crossorigin="anonymous"></script>
         <link rel="stylesheet" href="https://code.ionicframework.com/ionicons/2.0.1/css/ionicons.min.css">
         <script src="https://cdnjs.cloudflare.com/ajax/libs/uikit/3.0.0-beta.20/js/uikit-icons.min.js" integrity="sha256-iC7144xSYml8vsBsLNUxTvd3NAXNgnZrhv7ineC3t/o=" crossorigin="anonymous"></script>
         <link rel="stylesheet" href="https://gitcdn.xyz/cdn/Laralum/Laralum/feecc1c067d7fb9dd7e16b8524b591eae28455a3/src/Assets/css/notyf.min.css" />
@@ -118,94 +119,21 @@
                 </div>
                 <br />
             </center>
-            <ul class="uk-nav uk-nav-default">
-                @foreach ($packages as $package)
-                    @php $menu = Laralum\Laralum\Packages::menu($package); @endphp
-                    @if ($menu and array_key_exists('items', $menu) )
-                        @php
-                            $generalPerm = false;
-                            foreach ($menu['items'] as $item) {
-                                if (! array_key_exists('permission', $item)) {
-                                    $generalPerm = true;
-                                } else {
-                                    (! ($user->hasPermission($item['permission']) || $user->superAdmin())) ?: $generalPerm = true;
-                                }
-                            }
-                        @endphp
-                        @if($generalPerm)
-                            <li class="uk-nav-header">
-                                {{ ucfirst($package) }}
-                            </li>
-                        @endif
-                        @foreach ($menu['items'] as $item)
-                            @if (array_key_exists('permission', $item))
-                                @if ($user->hasPermission($item['permission']) || $user->superAdmin())
-                                    <li>
-                                        @if ((array_key_exists('text', $item) or array_key_exists('trans', $item)) and array_key_exists('link', $item))
-                                            <a href="{{ $item['link'] }}">
-                                                {{ array_key_exists('trans', $item) ? __($item['trans']) : $item['text'] }}
-                                            </a>
-                                        @elseif ((array_key_exists('text', $item) or array_key_exists('trans', $item)) and array_key_exists('route', $item))
-                                            <a href="{{ route($item['route']) }}">
-                                                {{ array_key_exists('trans', $item) ? __($item['trans']) : $item['text'] }}
-                                            </a>
-                                        @endif
-                                    </li>
-                                @endif
-                            @else
-                                <li>
-                                    @if ((array_key_exists('text', $item) or array_key_exists('trans', $item)) and array_key_exists('link', $item))
-                                        <a href="{{ $item['link'] }}">
-                                            {{ array_key_exists('trans', $item) ? __($item['trans']) : $item['text'] }}
-                                        </a>
-                                    @elseif ((array_key_exists('text', $item) or array_key_exists('trans', $item)) and array_key_exists('route', $item))
-                                        <a href="{{ route($item['route']) }}">
-                                            {{ array_key_exists('trans', $item) ? __($item['trans']) : $item['text'] }}
-                                        </a>
-                                    @endif
-                                </li>
-                            @endif
-                        @endforeach
-                    @endif
+            <ul class="uk-nav-default" uk-nav="multiple: false">
+
+                @foreach (\Laralum\Laralum\Menu::generate() as $menu)
+                    <li class="uk-parent uk-margin-small-top @if(session('menu_action') == strtolower($menu->name)) uk-open last-saved @endif">
+                        <a class="uk-nav-header save-menu-action" id="{{ strtolower($menu->name) }}" href="#">
+                            {{ $menu->name }}
+                        </a>
+                        <ul class="uk-nav-sub">
+                            @foreach ($menu->items as $item)
+                                <li><a href="{{ $item->url }}">{{ $item->text }}</a></li>
+                            @endforeach
+                        </ul>
+                    </li>
                 @endforeach
-                @if (array_key_exists('menu', config('laralum')))
-                    @foreach (config('laralum.menu') as $custom_menu)
-                        <li class="uk-nav-header">
-                            {{ $custom_menu['title'] }}
-                        </li>
-                        @foreach ($custom_menu['items'] as $custom_item)
-                            @if (array_key_exists('text', $custom_item) or array_key_exists('trans', $custom_item))
-                                @if (array_key_exists('permission', $custom_item))
-                                    @if ($user->hasPermission($custom_item['permission']) || $user->superAdmin())
-                                        <li>
-                                            @if ((array_key_exists('text', $custom_item) or array_key_exists('trans', $custom_item)) and array_key_exists('link', $custom_item))
-                                                <a href="{{ $custom_item['link'] }}">
-                                                    {{ array_key_exists('trans', $custom_item) ? __($custom_item['trans']) : $custom_item['text'] }}
-                                                </a>
-                                            @elseif ((array_key_exists('text', $custom_item) or array_key_exists('trans', $custom_item)) and array_key_exists('route', $custom_item))
-                                                <a href="{{ route($custom_item['route']) }}">
-                                                    {{ array_key_exists('trans', $custom_item) ? __($custom_item['trans']) : $custom_item['text'] }}
-                                                </a>
-                                            @endif
-                                        </li>
-                                    @endif
-                                @else
-                                    <li>
-                                        @if ((array_key_exists('text', $custom_item) or array_key_exists('trans', $custom_item)) and array_key_exists('link', $custom_item))
-                                            <a href="{{ $custom_item['link'] }}">
-                                                {{ array_key_exists('trans', $custom_item) ? __($custom_item['trans']) : $custom_item['text'] }}
-                                            </a>
-                                        @elseif ((array_key_exists('text', $custom_item) or array_key_exists('trans', $custom_item)) and array_key_exists('route', $custom_item))
-                                            <a href="{{ route($custom_item['route']) }}">
-                                                {{ array_key_exists('trans', $custom_item) ? __($custom_item['trans']) : $custom_item['text'] }}
-                                            </a>
-                                        @endif
-                                    </li>
-                                @endif
-                            @endif
-                        @endforeach
-                    @endforeach
-                @endif
+
             </ul>
         </div>
         <div class="content-padder content-background">
@@ -246,10 +174,28 @@
                         $('#navbar_name').html("{{ Auth::user()->name }}");
                     }
                 }
+
                 resize_navbar();
                 $( window ).resize(function() {
             		resize_navbar();
             	});
+
+                function save_menu_action(el)
+                {
+                    $.post("{{ route('laralum_api::save_menu_action') }}", {
+                        '_token': "{{ csrf_token() }}",
+                        'menu': el.attr('id'),
+                    });
+                }
+
+                $('.save-menu-action').click(function() {
+                    save_menu_action($(this));
+                });
+
+                last_saved = $('.uk-open.last-saved');
+                if (last_saved.length) {
+                    save_menu_action(last_saved.find('.save-menu-action'));
+                }
             })
         </script>
     </body>
