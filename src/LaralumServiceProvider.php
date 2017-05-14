@@ -4,6 +4,9 @@ namespace Laralum\Laralum;
 
 use Illuminate\Support\ServiceProvider;
 use Laralum\Permissions\PermissionsChecker;
+use Laralum\Laralum\Commands\LaralumInfo;
+use Laralum\Laralum\Commands\LaralumPublish;
+use Laralum\Laralum\Commands\LaralumPackages;
 
 class LaralumServiceProvider extends ServiceProvider
 {
@@ -41,6 +44,7 @@ class LaralumServiceProvider extends ServiceProvider
 
         if (!$this->app->routesAreCached()) {
             require __DIR__.'/Routes/web.php';
+            require __DIR__.'/Routes/api.php';
         }
 
         // Manually register other user packages
@@ -61,6 +65,14 @@ class LaralumServiceProvider extends ServiceProvider
                     $this->app->register('Laralum\\'.strtoupper($package)."\\$provider");
                 }
             }
+        }
+
+        if ($this->app->runningInConsole()) {
+            $this->commands([
+                LaralumInfo::class,
+                LaralumPackages::class,
+                LaralumPublish::class,
+            ]);
         }
     }
 

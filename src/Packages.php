@@ -23,7 +23,7 @@ class Packages extends Facade
     /**
      * Returns an array of all the installed packages.
      */
-    public static function all()
+    public static function get()
     {
         // Check for Laralum packages
         $packages = [];
@@ -33,7 +33,7 @@ class Packages extends Facade
 
         foreach ($files as $package) {
             if ($package != '.' and $package != '..' and ucfirst($package) != 'Laralum') {
-                array_push($packages, $package);
+                array_push($packages, strtolower($package));
             }
         }
 
@@ -92,23 +92,20 @@ class Packages extends Facade
     }
 
     /**
-     * Returns the package submenu if exists.
+     * Gets all packages and orders them by preference.
      *
-     * @param string $package
+     * @return array
      */
-    public static function submenu($package)
+    public static function all()
     {
-        $dir = __DIR__.'/../../'.$package.'/src';
-        $files = is_dir($dir) ? scandir($dir) : [];
+        $preference = collect(['laralum', 'dashboard', 'users', 'roles', 'permissions']);
 
-        foreach ($files as $file) {
-            if ($file == 'Submenu.json') {
-                $file_r = file_get_contents($dir.'/'.$file);
-
-                return json_decode($file_r, true);
+        collect(static::get())->each(function ($package) use ($preference){
+            if (!$preference->contains($package)) {
+                $preference->push($package);
             }
-        }
+        });
 
-        return [];
+        return $preference->toArray();
     }
 }
