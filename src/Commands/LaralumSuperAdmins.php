@@ -3,7 +3,6 @@
 namespace Laralum\Laralum\Commands;
 
 use Illuminate\Console\Command;
-use Laralum\Laralum\Packages;
 use Laralum\Users\Models\User;
 
 class LaralumSuperAdmins extends Command
@@ -55,7 +54,7 @@ class LaralumSuperAdmins extends Command
         });
 
         $this->line(' ');
-        $this->comment('- Found ' . count($admins) . ' superadmins');
+        $this->comment('- Found '.count($admins).' superadmins');
         $this->line(' ');
 
         $this->table($headers, $admins);
