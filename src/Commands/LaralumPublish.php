@@ -67,6 +67,7 @@ class LaralumPublish extends Command
                     if ($pr) {
                         $this->callSilent('vendor:publish', [
                             '--provider' => $pr,
+                            '--force' => true,
                         ]);
                     }
                 }
