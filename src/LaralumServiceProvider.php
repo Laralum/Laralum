@@ -7,6 +7,7 @@ use Laralum\Laralum\Commands\LaralumInfo;
 use Laralum\Laralum\Commands\LaralumPackages;
 use Laralum\Laralum\Commands\LaralumPublish;
 use Laralum\Laralum\Commands\LaralumSuperAdmins;
+use Laralum\Laralum\Commands\LaralumSettings;
 use Laralum\Permissions\PermissionsChecker;
 
 class LaralumServiceProvider extends ServiceProvider
@@ -74,6 +75,7 @@ class LaralumServiceProvider extends ServiceProvider
                 LaralumPackages::class,
                 LaralumPublish::class,
                 LaralumSuperAdmins::class,
+                LaralumSettings::class,
             ]);
         }
     }

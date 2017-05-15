@@ -54,6 +54,10 @@ class LaralumSuperAdmins extends Command
             return $data;
         });
 
+        $this->line(' ');
+        $this->comment('- Found ' . count($admins) . ' superadmins');
+        $this->line(' ');
+
         $this->table($headers, $admins);
     }
 }
