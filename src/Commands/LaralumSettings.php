@@ -3,7 +3,6 @@
 namespace Laralum\Laralum\Commands;
 
 use Illuminate\Console\Command;
-use Laralum\Laralum\Packages;
 use Laralum\Settings\Models\Settings;
 
 class LaralumSettings extends Command
@@ -43,34 +42,34 @@ class LaralumSettings extends Command
 
         $this->table(
             ['Base URL'], [
-            [config('laralum.settings')['base_url']]
+            [config('laralum.settings')['base_url']],
         ]);
 
         $this->table(
             ['API URL'], [
-            [config('laralum.settings')['api_url']]
+            [config('laralum.settings')['api_url']],
         ]);
 
         $s = Settings::first();
 
         $this->table(
             ['APP Name'], [
-            [$s->appname]
+            [$s->appname],
         ]);
 
         $this->table(
             ['Description'], [
-            [$s->description]
+            [$s->description],
         ]);
 
         $this->table(
             ['Keywords'], [
-            [$s->keywords]
+            [$s->keywords],
         ]);
 
         $this->table(
             ['Author'], [
-            [$s->author]
+            [$s->author],
         ]);
     }
 }
