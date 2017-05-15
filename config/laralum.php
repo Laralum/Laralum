@@ -29,7 +29,7 @@ return [
     | Languages settings
     |--------------------------------------------------------------------------
     |
-    | These are the current languages supported on laralum.
+    | This are the current languages supported on laralum.
     */
     'languages' => ['en', 'es', 'ca', 'fr', 'de', 'it'],
 
