@@ -108,4 +108,14 @@ class Packages extends Facade
 
         return $preference->toArray();
     }
+
+    /**
+     * Returns the default CSS used in the public views.
+     *
+     * @return string
+     */
+    public static function css()
+    {
+        return "https://gitcdn.xyz/cdn/24aitor/CLMaterial/89a342093ff9cf980e1e644b9552d28fc7c54a0c/src/css/clmaterial.min.css";
+    }
 }
