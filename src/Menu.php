@@ -51,7 +51,7 @@ class Menu
 
         return $this;
     }
-
+    
     /**
      * Generates a full menu with all packages / permissions.
      *
@@ -68,19 +68,7 @@ class Menu
             $pma = Packages::menu($package);
 
             if (array_key_exists('items', $pma)) {
-                foreach ($pma['items'] as $i) {
-                    $item = new Item();
-                    $item->text = array_key_exists('trans', $i) ? __($i['trans']) : $i['text'];
-                    $item->url = array_key_exists('route', $i) ? route($i['route']) : url($i['link']);
-
-                    if (array_key_exists('permission', $i) && !$user->superAdmin()) {
-                        if (!$user->hasPermission($i['permission'])) {
-                            continue;
-                        }
-                    }
-
-                    $pm->item($item);
-                }
+                $pm->items = array_merge($pm->items, static::getPackageMenuItems($pma, $user));
             }
 
             if (count($pm->items) > 0) {
@@ -88,32 +76,60 @@ class Menu
             }
         }
 
+        $m->items = array_merge($m->items, static::getCustomMenuItems($user));
+
+        return $m->items;
+    }
+
+    /**
+     * Get custom menus defined in the laralum config.
+     * 
+     * @return [type] [description]
+     */
+    public static function getCustomMenuItems($user)
+    {
+        $menuItems = [];
+
         if (array_key_exists('menu', config('laralum'))) {
             foreach (config('laralum.menu') as $custom_menu) {
                 $pm = new self();
                 $pm->name(ucfirst($custom_menu['title']));
-                $pma = config('laralum.menu');
-
-                foreach ($custom_menu['items'] as $i) {
-                    $item = new Item();
-                    $item->text = array_key_exists('trans', $i) ? __($i['trans']) : $i['text'];
-                    $item->url = array_key_exists('route', $i) ? route($i['route']) : url($i['link']);
-
-                    if (array_key_exists('permission', $i) && !$user->superAdmin()) {
-                        if (!$user->hasPermission($i['permission'])) {
-                            continue;
-                        }
-                    }
-
-                    $pm->item($item);
-                }
+                $pm->items = array_merge($pm->items, static::getPackageMenuItems($custom_menu, $user));
 
                 if (count($pm->items) > 0) {
-                    $m->item($pm);
+                    array_push($menuItems, $pm);
                 }
             }
         }
 
-        return $m->items;
+        return $menuItems;
+    }
+
+    /**
+     * Get package menu Items.
+     * 
+     * @param  [type] $packageMenu [description]
+     * @param  [type] $items       [description]
+     * @return [type]              [description]
+     */
+    public static function getPackageMenuItems($menu, $user)
+    {
+        $packageItems = [];
+
+        foreach ($menu['items'] as $i) {
+            $item = new Item();
+            $item->text = array_key_exists('trans', $i) ? __($i['trans']) : $i['text'];
+            $item->url = array_key_exists('route', $i) ? route($i['route']) : url($i['link']);
+
+            if (array_key_exists('permission', $i) && !$user->superAdmin()) {
+                if (!$user->hasPermission($i['permission'])) {
+                    continue;
+                }
+            }
+
+            array_push($packageItems, $item);
+        }
+
+        return $packageItems;
     }
 }
