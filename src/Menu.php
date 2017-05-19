@@ -51,7 +51,7 @@ class Menu
 
         return $this;
     }
-    
+
     /**
      * Generates a full menu with all packages / permissions.
      *
@@ -83,7 +83,7 @@ class Menu
 
     /**
      * Get custom menus defined in the laralum config.
-     * 
+     *
      * @return [type] [description]
      */
     public static function getCustomMenuItems($user)
@@ -107,10 +107,11 @@ class Menu
 
     /**
      * Get package menu Items.
-     * 
-     * @param  [type] $packageMenu [description]
-     * @param  [type] $items       [description]
-     * @return [type]              [description]
+     *
+     * @param [type] $packageMenu [description]
+     * @param [type] $items       [description]
+     *
+     * @return [type] [description]
      */
     public static function getPackageMenuItems($menu, $user)
     {
