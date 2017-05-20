@@ -26,7 +26,7 @@ class LaralumAuth
 
         $user = User::findOrFail(Auth::id());
 
-        if (!$user->superAdmin() && !$user->hasPermission('laralum::access')) {
+        if (!$user->laralumAccess()) {
             return redirect('/')->with('error', 'You have no rights to enter this page');
         }
 
