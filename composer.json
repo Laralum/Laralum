@@ -13,7 +13,7 @@
         "laralum/settings": "1.*",
         "laralum/permissions": "1.*",
         "laralum/roles": "1.*",
-        "laralum/users": "^1.0.5|1.*",
+        "laralum/users": "^1.0.5",
         "laralum/profile": "1.*",
         "laralum/notifications": "1.*"
     },
