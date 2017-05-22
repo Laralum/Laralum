@@ -3,12 +3,12 @@
 namespace Laralum\Laralum;
 
 use Illuminate\Support\ServiceProvider;
+use Laralum\Laralum\Commands\LaralumCreatePackage;
 use Laralum\Laralum\Commands\LaralumInfo;
 use Laralum\Laralum\Commands\LaralumPackages;
 use Laralum\Laralum\Commands\LaralumPublish;
 use Laralum\Laralum\Commands\LaralumSettings;
 use Laralum\Laralum\Commands\LaralumSuperAdmins;
-use Laralum\Laralum\Commands\LaralumCreatePackage;
 use Laralum\Permissions\PermissionsChecker;
 
 class LaralumServiceProvider extends ServiceProvider

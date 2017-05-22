@@ -3,7 +3,6 @@
 namespace Laralum\Laralum\Commands;
 
 use Illuminate\Console\Command;
-use Laralum\Laralum\Packages;
 
 class LaralumCreatePackage extends Command
 {
@@ -39,14 +38,13 @@ class LaralumCreatePackage extends Command
     public function handle()
     {
         $name = $this->argument('name');
-        $path = $this->option('path') ? base_path() . '/' . $this->option('path') . '/' . $name : __DIR__ . '/../../' . $name;
+        $path = $this->option('path') ? base_path().'/'.$this->option('path').'/'.$name : __DIR__.'/../../'.$name;
 
         if (!is_dir($path)) {
             mkdir($path, 0777, true);
-            $this->info('Project root created at: ' . $path);
+            $this->info('Project root created at: '.$path);
 
             // Create package structure here
-
         } else {
             $this->error("The folder '$path' already exists");
         }
