@@ -19,8 +19,8 @@
                     </div>
                     <div class="uk-card-body">
 
-                            <h4>@if(isset($message)) {{ $message }} @else @lang('laralum::general.confirmation_proceed') @endif</h4>
-                            <p>@if(isset($description)) {{ $description }} @else @lang('laralum::general.confirmation_info') @endif</p>
+                            <h4 class="uk-text-break">@if(isset($message)) {{ $message }} @else @lang('laralum::general.confirmation_proceed') @endif</h4>
+                            <p class="uk-text-break">@if(isset($description)) {{ $description }} @else @lang('laralum::general.confirmation_info') @endif</p>
                             <br>
                         <form class="uk-form-stacked"  @if(isset($action)) action="{{ $action }}" @endif method="POST">
                             {{ csrf_field() }}
