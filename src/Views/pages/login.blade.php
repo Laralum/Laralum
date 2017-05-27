@@ -72,7 +72,7 @@
 
                                             <div class="uk-margin">
                                                 <div class="uk-position-relative">
-                                                    <label><input name="remember" {{ !old('remember') ?: 'checked' }} class="uk-checkbox" type="checkbox"> @lang('laralum::general.remember_me')</label><br />
+                                                    <label><input name="remember" {{ old('remember') ? 'checked' : '' }} class="uk-checkbox" type="checkbox"> @lang('laralum::general.remember_me')</label><br />
                                                 </div>
                                             </div>
 
