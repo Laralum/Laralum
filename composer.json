@@ -8,7 +8,7 @@
         "doctrine/dbal": "2.*",
         "consoletvs/charts": "4.*",
         "consoletvs/identify": "1.*",
-        "aitor24/localizer": "1.3.*",
+        "aitor24/localizer": "^1.4.1",
         "laralum/dashboard": "1.*",
         "laralum/settings": "1.*",
         "laralum/permissions": "1.*",
