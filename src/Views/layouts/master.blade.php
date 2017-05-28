@@ -52,10 +52,12 @@
                                         <!-- User Injector -->
                                         <li class="uk-nav-header">Select Language</li>
                                         @foreach (\Aitor24\Localizer\Facades\LocalizerFacade::addNames(config('laralum.languages')) as $code => $name)
-                                            @if (\Aitor24\Localizer\Facades\LocalizerFacade::isAllowedLanguage($code) && $code != \Illuminate\Support\Facades\App::getLocale())
-                                                <li>
-                                                    <a href="{{ route("localizer::setLocale", ['locale' => $code]) }}">{{ $name }}</a>
-                                                </li>
+                                            @if (!(config('localizer.block_unallowed_langs') && !\Aitor24\Localizer\Facades\LocalizerFacade::isAllowedLanguage($code)))
+                                                @if ($code != \Illuminate\Support\Facades\App::getLocale())
+                                                    <li>
+                                                        <a href="{{ route("localizer::setLocale", ['locale' => $code]) }}">{{ $name }}</a>
+                                                    </li>
+                                                @endif
                                             @endif
                                         @endforeach
                                     </ul>
@@ -122,7 +124,7 @@
             <ul class="uk-nav-default" uk-nav="multiple: false">
 
                 @foreach (\Laralum\Laralum\Menu::generate() as $menu)
-                    <li class="uk-parent uk-margin-small-top @if(session('menu_action') == strtolower($menu->name)) uk-open last-saved @endif">
+                    <li class="uk-parent uk-margin-small-top {{ (session('menu_action') == strtolower($menu->name)) ? 'uk-open last-saved' : '' }}">
                         <a class="uk-nav-header save-menu-action" id="{{ strtolower($menu->name) }}" href="#">
                             {{ $menu->name }}
                         </a>
