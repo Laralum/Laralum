@@ -37,7 +37,7 @@ return [
     'submit'                => 'Presentar',
     'loading'               => 'Carregant',
     'online'                => 'En línia',
-    'away'                  => 'Lluny',
+    'away'                  => 'Fora',
     'proceed'               => 'Procedir',
     'perform_action'        => 'Esteu segur que voleu fer aquesta acció?',
     'confirmation_page'     => 'Pàgina de confirmació',
