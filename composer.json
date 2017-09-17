@@ -33,5 +33,12 @@
             "Laralum\\Laralum\\": "./src"
         }
     },
-    "minimum-stability": "dev"
+    "minimum-stability": "dev",
+    "extra": {
+        "laravel": {
+            "providers": [
+                "Laralum\\Laralum\\LaralumServiceProvider"
+            ]
+        }
+    }
 }
