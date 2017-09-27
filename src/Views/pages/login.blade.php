@@ -76,9 +76,11 @@
                                                 </div>
                                             </div>
 
-                                            <div class="uk-margin">
-                                                <a href="{{ route('password.request') }}">@lang("laralum::general.forgot_password")</a>
-                                            </div>
+                                            @if (Route::has('password.reset'))
+                                                <div class="uk-margin">
+                                                    <a href="{{ route('password.request') }}">@lang("laralum::general.forgot_password")</a>
+                                                </div>
+                                            @endif
 
                                             <div class="uk-margin">
                                                 <button type="submit" class="uk-button uk-button-primary">
