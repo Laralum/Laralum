@@ -117,7 +117,7 @@
                     <div class="uk-margin-top"></div>
                     <div id="name" class="uk-text-truncate">{{ Auth::user()->name }}</div>
                     <div id="email" class="uk-text-truncate">{{ Auth::user()->email }}</div>
-                    <span id="status" data-enabled="true" data-online-text="{{ __('laralum::general.online') }}" data-away-text="{{ __('laralum::general.away') }}" data-interval="20000" class="uk-margin-top uk-label uk-label-success"></span>
+                    <span id="status" data-enabled="true" data-online-text="{{ __('laralum::general.online') }}" data-away-text="{{ __('laralum::general.absent') }}" data-interval="20000" class="uk-margin-top uk-label uk-label-success"></span>
                 </div>
                 <br />
             </center>

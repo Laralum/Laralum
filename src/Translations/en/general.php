@@ -37,7 +37,7 @@ return [
     'submit'                => 'Submit',
     'loading'               => 'Loading',
     'online'                => 'Online',
-    'away'                  => 'Away',
+    'absent'                => 'Absent',
     'proceed'               => 'Proceed',
     'perform_action'        => 'Are you sure you want to perform this action ?',
     'confirmation_page'     => 'Confirmation Page',
@@ -47,7 +47,7 @@ return [
     'home'                  => 'Home',
     'logout'                => 'Logout',
     'actions'               => 'Actions',
-
+    
     'login_page'            => 'Login Page',
     'forgot_password'       => 'Forgot your password?',
     'login'                 => 'Login',

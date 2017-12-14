@@ -37,7 +37,7 @@ return [
     'submit'                => 'Absenden',
     'loading'               => 'Lädt',
     'online'                => 'Online',
-    'away'                  => 'Abwesend',
+    'absent'                => 'Abwesend',
     'proceed'               => 'Fortfahren',
     'perform_action'        => 'Sind Sie sicher, dass Sie diese Aktion durchführen möchten?',
     'confirmation_page'     => 'Bestätigungsseite',

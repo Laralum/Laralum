@@ -37,7 +37,7 @@ return [
     'submit'                => 'Soumettre',
     'loading'               => 'Chargement',
     'online'                => 'En ligne',
-    'away'                  => 'Un moyen',
+    'absent'                => 'Absent',
     'proceed'               => 'Procéder',
     'perform_action'        => 'Êtes-vous sûr de vouloir effectuer cette action?',
     'confirmation_page'     => 'Page de confirmation',

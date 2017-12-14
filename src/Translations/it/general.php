@@ -37,7 +37,7 @@ return [
     'submit'                => 'Sottoscrivi',
     'loading'               => 'Caricamento in corso',
     'online'                => 'In linea',
-    'away'                  => 'Lontano',
+    'absent'                => 'Assente',
     'proceed'               => 'Procedere',
     'perform_action'        => 'Sei sicuro di voler eseguire questa azione?',
     'confirmation_page'     => 'Pagina di conferma',

@@ -37,7 +37,7 @@ return [
     'submit'                => 'Enviar',
     'loading'               => 'Cargando',
     'online'                => 'En línea',
-    'away'                  => 'Lejos',
+    'absent'                => 'Ausente',
     'proceed'               => 'Proceder',
     'perform_action'        => '¿Está seguro de que desea realizar esta acción?',
     'confirmation_page'     => 'Página de confirmación',
