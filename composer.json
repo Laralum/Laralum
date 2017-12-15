@@ -6,7 +6,7 @@
         "laravel/framework": "^5.4",
         "ext-bcmath": "*",
         "doctrine/dbal": "2.*",
-        "consoletvs/support": "^2.1.2",
+        "consoletvs/support": "^2.5.0",
         "consoletvs/charts": "5.*",
         "consoletvs/identify": "1.*",
         "aitor24/localizer": "^1.4.2",
