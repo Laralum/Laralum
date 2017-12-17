@@ -18,7 +18,7 @@ return [
     'create'                => 'Crear',
     'edit'                  => 'Editar',
     'user'                  => 'Usuario',
-    'actions'               => 'Comportamiento',
+    'actions'               => 'Acciones',
     'close'                 => 'Cerca',
     'open'                  => 'Abierto',
     'update'                => 'Actualizar',
