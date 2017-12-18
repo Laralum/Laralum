@@ -80,6 +80,15 @@
                                                 <li class="uk-nav-header">{{ $package }} @if($counter) <span class="uk-badge">{{ $counter }}</span> @endif
                                                 </li>
                                                 @foreach ($items as $item)
+                                                    @php
+                                                        $authorized = true;   
+                                                        if (isset($item['permission'])) {
+                                                            if (!$user->hasPermission($item['permission']) && !$user->superAdmin()) {
+                                                                $authorized = false;
+                                                            }
+                                                        }
+                                                    @endphp
+                                                    @if($authorized)
                                                     <li>
                                                         <a href="{{ $item['url'] }}">
                                                             {{ $item['text'] }}
@@ -88,8 +97,8 @@
                                                             @endphp
                                                             @if ($show) <span class="uk-badge">{{ $show }}</span> @endif
                                                         </a>
-
                                                     </li>
+                                                    @endif
                                                 @endforeach
                                             @endif
                                         @endforeach
