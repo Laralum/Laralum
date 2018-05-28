@@ -44,7 +44,7 @@ class LaralumCreatePackage extends Command
             mkdir($path, 0777, true);
             $this->info('Project root created at: '.$path);
 
-            // Create package structure here
+        // Create package structure here
         } else {
             $this->error("The folder '$path' already exists");
         }
