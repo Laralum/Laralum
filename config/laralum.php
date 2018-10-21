@@ -23,6 +23,15 @@ return [
     'superadmins' => [
         'example@email.com',
     ],
+    
+    /*
+    |--------------------------------------------------------------------------
+    | Superadmins bypass hasPermission
+    |--------------------------------------------------------------------------
+    |
+    | This determines if the superadmins can bypass the $user->hasPermission()
+    */
+    'superadmin_bypass_haspermission' => false,
 
     /*
     |--------------------------------------------------------------------------
